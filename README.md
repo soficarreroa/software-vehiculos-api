@@ -37,14 +37,39 @@ source venv/bin/activate
 ```cmd
 pip install fastapi uvicorn pymysql sqlalchemy supabase python-dotenv
 ```
+### 5. Crear variables de entorno .env
+## Variables de entorno
 
-### 5. Run the server
+El proyecto requiere un archivo `.env` con las credenciales de la base de datos.
+
+### Pasos
+
+1. Copia el archivo de ejemplo:
+
+```bash
+cp .env_example .env
+```
+
+2. Abre el archivo `.env` y completa los valores:
+
+```
+SUPABASE_URL=
+SUPABASE_KEY=
+```
+
+3. Pide los valores a **Sofía o Juan** — ella tiene las credenciales del proyecto.
+
+> El archivo `.env` nunca debe subirse al repositorio. Ya está incluido en `.gitignore`.
+
+### 6. Run the server
 
 ```cmd
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### 6. Test
+### 7. Test
 
 Open browser at `http://localhost:8000`
+
+
 
