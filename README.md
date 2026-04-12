@@ -30,13 +30,13 @@ cd software-vehiculos-api
 
 ```cmd
 python -m venv venv
-venv\Scripts\activate
+source venv/bin/activate
 ```
 
 ### 4. Install dependencies
 
 ```cmd
-pip install -r requirements.txt
+pip install fastapi uvicorn pymysql sqlalchemy supabase python-dotenv
 ```
 
 ### 5. Run the server
