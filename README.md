@@ -1,7 +1,6 @@
 # Software Vehiculos API
 
-FastAPI + MySQL/MariaDB REST API.
-
+FastAPI + SUPABASE
 ---
 
 ## Requirements
