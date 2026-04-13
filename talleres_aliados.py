@@ -1,18 +1,24 @@
 from fastapi import APIRouter, HTTPException
-from dotenv import load_dotenv
 from database import client
 
-load_dotenv()
-
 router = APIRouter()
-
 
 @router.get("/talleres")
 def get_talleres():
     try:
-        print("client:", client)
-        response = client.table("talleres").select("*").execute()
+        response = client.table("talleres").select(
+            "id, nombre, direccion, telefono, email, marcas_soportadas, lat, lng, certificado, notas, creado_en, categoria, rating, reviews"
+        ).execute()
         return response.data
     except Exception as e:
-        print(e)
+        print(f"ERROR: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/talleres")
+def create_taller(taller: dict):
+    try:
+        response = client.table("talleres").insert(taller).execute()
+        return response.data[0]
+    except Exception as e:
+        print(f"ERROR: {e}")
         raise HTTPException(status_code=500, detail=str(e))
