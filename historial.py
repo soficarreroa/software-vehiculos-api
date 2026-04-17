@@ -9,7 +9,7 @@ router = APIRouter(prefix="/api/v1/historial", tags=["History"])
 
 
 class HistoryEntry(BaseModel):
-    id: int
+    id: int  
     fecha: datetime
     descripcion_siniestro: str
     vehiculo_nombre: str
