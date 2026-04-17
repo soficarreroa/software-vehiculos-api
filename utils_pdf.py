@@ -23,7 +23,7 @@ class PDFReport(FPDF):
         self.rect(0, 0, 210, 28, style="F")
 
         self.set_fill_color(*ACENTO_AZUL)
-        self.rect(0, 27, 210, 2, style="F")
+        self.rect(0, 27, 210, 2, style="F")  
 
         self.set_xy(10, 4)
         self.set_font("Helvetica", "B", 18)
