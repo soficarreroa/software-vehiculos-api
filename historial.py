@@ -36,7 +36,7 @@ async def get_historial(
             .order("creado_en", desc=True)\
             .execute()
         
-        print(f"📊 Cotizaciones encontradas: {len(cotizaciones_response.data)}")
+        print(f" Cotizaciones encontradas: {len(cotizaciones_response.data)}")
         
         if not cotizaciones_response.data:
             return []
@@ -94,7 +94,7 @@ async def get_historial(
                 "descripcion_siniestro": cotizacion.get("observaciones") or "Valoración de daños",
                 "vehiculo_nombre": vehiculo_nombre,
                 "placa": placa_vehiculo,
-                "valor_total": float(total),
+                "valor_total": float(cotizacion.get("monto_total") or total),
                 "estado": estado_final
             })
         
@@ -158,13 +158,15 @@ async def descargar_reporte_pdf(
         
         # Generar PDF
         pdf_bytes = crear_pdf_binario(vehiculo, piezas, cotizacion)
+        # En historial.py, después de crear el pdf_bytes
+        print(f"Tamaño del PDF generado: {len(pdf_bytes)} bytes")
         
         print(f" PDF generado exitosamente para cotización {cotizacion_id}")
         
         return Response(
-            content=bytes(pdf_bytes),
-            media_type="application/pdf",
-            headers={"Content-Disposition": f"attachment; filename=reporte_{cotizacion_id}.pdf"}
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename=reporte_{cotizacion_id}.pdf"}
         )
         
     except Exception as e:

@@ -66,7 +66,8 @@ def crear_pdf_binario(datos_vehiculo: dict, piezas: list, datos_cotizacion: dict
         for p in piezas:
             repuesto = float(p.get('precio_unit_repuesto') or 0)
             mano_obra = float(p.get('precio_unit_mano_obra') or 0)
-            subtotal = repuesto + mano_obra
+            pintura = float(p.get('precio_unit_pintura') or 0)
+            subtotal = repuesto + mano_obra + pintura
             total += subtotal
             
             pdf.cell(80, 8, str(p.get('descripcion', 'Pieza'))[:40], 1)
@@ -80,4 +81,5 @@ def crear_pdf_binario(datos_vehiculo: dict, piezas: list, datos_cotizacion: dict
         pdf.cell(160, 8, "TOTAL GENERAL:", 1, 0, "R")
         pdf.cell(30, 8, f"${total:,.0f}", 1)
     
-    return bytes(pdf.output())
+    # En fpdf2, output(dest='S') devuelve bytes directamente
+    return pdf.output(dest='S')
