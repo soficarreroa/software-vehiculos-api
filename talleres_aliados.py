@@ -3,7 +3,7 @@ from database import client
 
 router = APIRouter()
 
-@router.get("/talleres/marcas")
+@router.get("/marcas")
 def get_marcas():
     try:
         response = client.table("talleres").select("marcas_soportadas").execute()
