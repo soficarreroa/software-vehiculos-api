@@ -6,7 +6,7 @@ from vehiculos import router as vehiculos_router
 from cotizaciones import router as cotizaciones_router
 from piezas import router as piezas_router
 
-app = FastAPI()
+app = FastAPI(title="AutoPerito API", version="1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,4 +28,4 @@ app.include_router(piezas_router, prefix="/api/v1")
 
 @app.get("/")
 def root():
-    return {"status": "running", "message": "API funcionando correctamente"}
+    return {"message": "API AutoPerito funcionando"}

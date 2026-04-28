@@ -27,7 +27,7 @@ async def get_historial(
         # Convertir user_id a integer
         user_id_int = int(user_id)
         
-        print(f"🔍 Buscando cotizaciones para usuario: {user_id_int}")
+        print(f" Buscando cotizaciones para usuario: {user_id_int}")
         
         # Paso 1: Obtener todas las cotizaciones del usuario
         cotizaciones_response = client.table("cotizaciones")\
@@ -36,7 +36,7 @@ async def get_historial(
             .order("creado_en", desc=True)\
             .execute()
         
-        print(f"📊 Cotizaciones encontradas: {len(cotizaciones_response.data)}")
+        print(f" Cotizaciones encontradas: {len(cotizaciones_response.data)}")
         
         if not cotizaciones_response.data:
             return []
@@ -94,16 +94,16 @@ async def get_historial(
                 "descripcion_siniestro": cotizacion.get("observaciones") or "Valoración de daños",
                 "vehiculo_nombre": vehiculo_nombre,
                 "placa": placa_vehiculo,
-                "valor_total": float(total),
+                "valor_total": float(cotizacion.get("monto_total") or total),
                 "estado": estado_final
             })
         
         # Paso 6: Aplicar filtro por placa si es necesario
         if placa:
             history = [h for h in history if placa.lower() in h["placa"].lower()]
-            print(f"🔍 Filtrado por placa '{placa}': {len(history)} resultados")
+            print(f" Filtrado por placa '{placa}': {len(history)} resultados")
         
-        print(f"✅ Retornando {len(history)} registros de historial")
+        print(f" Retornando {len(history)} registros de historial")
         return history
         
     except Exception as e:
@@ -120,7 +120,6 @@ async def descargar_reporte_pdf(
 ):
     try:
         user_id_int = int(user_id)
-        
         print(f" Generando PDF para cotización: {cotizacion_id}, usuario: {user_id_int}")
         
         # Verificar que la cotización pertenece al usuario
@@ -132,9 +131,10 @@ async def descargar_reporte_pdf(
         
         if not cotizacion_response.data:
             print(f" Cotización {cotizacion_id} no encontrada para usuario {user_id_int}")
-            return Response(content="Acceso denegado o no existe", status_code=403)
-
+            raise HTTPException(status_code=404, detail="Cotización no encontrada o acceso denegado")
+        
         cotizacion = cotizacion_response.data[0]
+        print(f" Cotización encontrada: ID {cotizacion['id']}, estado {cotizacion.get('estado')}")
         
         # Obtener el vehículo
         vehiculo = {}
@@ -143,9 +143,13 @@ async def descargar_reporte_pdf(
                 .select("*")\
                 .eq("id", cotizacion["vehiculo_id"])\
                 .execute()
-            
             if vehiculo_response.data:
                 vehiculo = vehiculo_response.data[0]
+                print(f" Vehículo encontrado: {vehiculo.get('marca')} {vehiculo.get('modelo')} - Placa {vehiculo.get('placa')}")
+            else:
+                print(" No se encontraron datos del vehículo")
+        else:
+            print(" La cotización no tiene vehículo asociado")
         
         # Obtener las piezas asociadas
         piezas_response = client.table("items_cotizacion")\
@@ -154,25 +158,31 @@ async def descargar_reporte_pdf(
             .execute()
         
         piezas = piezas_response.data
-        print(f" Encontradas {len(piezas)} piezas para la cotización")
+        print(f" Piezas encontradas: {len(piezas)}")
         
-        # Generar PDF
+        # Generar PDF (puede lanzar excepción)
         pdf_bytes = crear_pdf_binario(vehiculo, piezas, cotizacion)
         
-        print(f" PDF generado exitosamente para cotización {cotizacion_id}")
+        # Validar que el PDF no esté vacío
+        if not pdf_bytes or len(pdf_bytes) < 100:  # Un PDF mínimo tiene más de 100 bytes
+            print(f" El PDF generado tiene tamaño sospechoso: {len(pdf_bytes) if pdf_bytes else 0} bytes")
+            raise HTTPException(status_code=500, detail="El PDF generado está vacío o es inválido")
+        
+        print(f" PDF generado correctamente. Tamaño: {len(pdf_bytes)} bytes")
         
         return Response(
-            content=bytes(pdf_bytes),
+            content=pdf_bytes,
             media_type="application/pdf",
             headers={"Content-Disposition": f"attachment; filename=reporte_{cotizacion_id}.pdf"}
         )
         
+    except HTTPException:
+        raise
     except Exception as e:
-        print(f" ERROR generando PDF: {str(e)}")
+        print(f" ERROR en descargar_reporte_pdf: {str(e)}")
         import traceback
         traceback.print_exc()
-        return Response(content="Error interno al generar el PDF", status_code=500)
-
+        raise HTTPException(status_code=500, detail=f"Error interno al generar el PDF: {str(e)}")
 
 @router.patch("/{cotizacion_id}/estado")
 async def actualizar_estado_reparacion(
