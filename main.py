@@ -10,12 +10,8 @@ app = FastAPI(title="AutoPerito API", version="1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://software-vehiculos-git-sofia-fea-e852c0-sofia-carreros-projects.vercel.app",
-        "https://software-vehiculos.vercel.app",
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
