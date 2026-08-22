@@ -2,7 +2,7 @@ from types import SimpleNamespace
 from typing import Any
 
 import bcrypt
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, Header, HTTPException, status
 from passlib.context import CryptContext
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator, model_validator
 
@@ -304,3 +304,109 @@ def register_taller(payload: TallerRegisterSchema):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error al registrar taller: {str(exc)}",
         ) from exc
+
+
+#  entrada para login
+class LoginSchema(BaseModel):
+    correo: EmailStr = Field(..., description="Correo electrónico del usuario")
+    contrasena: str = Field(..., min_length=1, description="Contraseña del usuario")
+
+    model_config = ConfigDict(str_strip_whitespace=True, extra="forbid")
+
+
+# Endpoint de login
+@router.post("/login", status_code=status.HTTP_200_OK)
+def login(payload: LoginSchema):
+    try:
+        email = normalize_email(str(payload.correo))
+        password = payload.contrasena
+
+        try:
+            auth_response = client.auth.sign_in_with_password({
+                "email": email,
+                "password": password,
+            })
+        except Exception:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Correo o contraseña incorrectos",
+            )
+
+        if not getattr(auth_response, "user", None) or not getattr(auth_response, "session", None):
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Correo o contraseña incorrectos",
+            )
+
+        auth_id = str(auth_response.user.id)
+        usuario_result = (
+            client.table("usuarios")
+            .select("id, correo, nombre_completo, rol, auth_id, activo")
+            .eq("auth_id", auth_id)
+            .execute()
+        )
+
+        if not usuario_result.data:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Usuario autenticado pero no encontrado en la base de datos",
+            )
+
+        usuario = usuario_result.data[0]
+
+        if not usuario.get("activo", True):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Cuenta inactiva",
+            )
+
+        session = auth_response.session
+        return {
+            "message": "Login exitoso",
+            "access_token": session.access_token,
+            "refresh_token": session.refresh_token,
+            "token_type": "bearer",
+            "expires_in": session.expires_in,
+            "usuario": {
+                "id": usuario.get("id"),
+                "correo": usuario.get("correo"),
+                "nombre_completo": usuario.get("nombre_completo"),
+                "rol": usuario.get("rol"),
+                "auth_id": usuario.get("auth_id"),
+            },
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error al iniciar sesión: {str(exc)}",
+        ) from exc
+def get_usuario_actual(authorization: str = Header(...)) -> dict:
+    """
+    Valida el token que el frontend manda en el header:
+    Authorization: Bearer <access_token>
+    """
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token no proporcionado",
+        )
+
+    token = authorization.split(" ", 1)[1]
+
+    try:
+        user_response = client.auth.get_user(token)
+    except Exception:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token inválido o expirado",
+        )
+
+    if not user_response or not getattr(user_response, "user", None):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token inválido o expirado",
+        )
+
+    return user_response.user
