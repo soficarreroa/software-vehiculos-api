@@ -1,5 +1,6 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from database import client
+from dependencies import requiere_rol
 
 router = APIRouter()
 
@@ -14,7 +15,7 @@ def get_talleres():
         print(f"ERROR: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.post("/talleres")
+@router.post("/talleres", dependencies=[Depends(requiere_rol(["taller"]))])
 def create_taller(taller: dict):
     try:
         response = client.table("talleres").insert(taller).execute()
