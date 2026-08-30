@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, Header, HTTPException, status
 from passlib.context import CryptContext
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator, model_validator
 
-from database import client
+from database import client, create_user_client
 
 if not hasattr(bcrypt, "__about__"):
     bcrypt.__about__ = SimpleNamespace(__version__=getattr(bcrypt, "__version__", "4.1.2"))
@@ -339,8 +339,13 @@ def login(payload: LoginSchema):
             )
 
         auth_id = str(auth_response.user.id)
+
+        scoped_client = create_user_client(
+            auth_response.session.access_token,
+            auth_response.session.refresh_token,
+        )
         usuario_result = (
-            client.table("usuarios")
+            scoped_client.table("usuarios")
             .select("id, correo, nombre_completo, rol, auth_id, activo")
             .eq("auth_id", auth_id)
             .execute()
