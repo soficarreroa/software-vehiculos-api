@@ -1,6 +1,6 @@
 from fastapi import Depends, Header, HTTPException, status
 
-from database import client
+from database import client, create_user_client
 
 
 def get_usuario_con_rol(authorization: str = Header(...)) -> dict:
@@ -28,8 +28,9 @@ def get_usuario_con_rol(authorization: str = Header(...)) -> dict:
 
     auth_id = str(user_response.user.id)
 
+    scoped_client = create_user_client(token, token)
     usuario_result = (
-        client.table("usuarios")
+        scoped_client.table("usuarios")
         .select("id, correo, rol, activo")
         .eq("auth_id", auth_id)
         .execute()
