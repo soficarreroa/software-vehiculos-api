@@ -154,6 +154,85 @@ def _build_vehicle_extra(payload: ClienteRegisterSchema) -> dict[str, Any] | Non
 
 @router.post("/registro/cliente", status_code=status.HTTP_201_CREATED)
 def register_cliente(payload: ClienteRegisterSchema):
+    email = normalize_email(str(payload.correo))
+    password = payload.contrasena.strip()
+
+    try:
+        auth_response = client.auth.sign_up({"email": email, "password": password})
+    except Exception as exc:
+        message = getattr(exc, "message", None) or str(exc)
+        status_code = getattr(exc, "status", None)
+        if status_code == 422 or "already registered" in message.lower():
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="El correo ya está registrado",
+            ) from exc
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Error de autenticación: {message}") from exc
+
+    if not getattr(auth_response, "user", None) or not getattr(auth_response.user, "id", None):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No se pudo crear el usuario en Supabase Auth")
+
+    auth_id = str(auth_response.user.id)
+
+    # Todo lo que viene después SÍ necesita rollback si falla
+    try:
+        hashed_password = hash_password(password)
+        usuario_payload = {
+            "correo": email,
+            "nombre_completo": payload.nombre_completo.strip(),
+            "telefono": payload.telefono.strip(),
+            "clave_hash": hashed_password,
+            "rol": "cliente",
+            "auth_id": auth_id,
+            "activo": True,
+        }
+        usuario_result = client.table("usuarios").insert(usuario_payload).execute()
+        if not usuario_result.data:
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No se pudo crear el usuario cliente")
+
+        usuario_creado = usuario_result.data[0]
+        usuario_id = usuario_creado.get("id")
+
+        vehiculo_data = None
+        if payload.placa:
+            vehiculo_payload = {
+                "usuario_id": usuario_id,
+                "placa": payload.placa,
+                "marca": payload.marca,
+                "modelo": payload.modelo,
+                "color": payload.color,
+                "extra": _build_vehicle_extra(payload),
+            }
+            vehiculo_result = client.table("vehiculos").insert(vehiculo_payload).execute()
+            if not vehiculo_result.data:
+                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No se pudo crear el vehículo asociado")
+            vehiculo_data = vehiculo_result.data[0]
+
+    except Exception as exc:
+        # Rollback: si algo falla aquí, borra el usuario de Auth para no dejarlo huérfano
+        try:
+            client.auth.admin.delete_user(auth_id)
+        except Exception:
+            pass  # si el rollback falla, al menos no ocultamos el error original
+        if isinstance(exc, HTTPException):
+            raise
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error al registrar cliente: {str(exc)}",
+        ) from exc
+
+    return {
+        "message": "Cliente registrado correctamente",
+        "usuario": {
+            "id": usuario_creado.get("id"),
+            "correo": usuario_creado.get("correo"),
+            "nombre_completo": usuario_creado.get("nombre_completo"),
+            "rol": usuario_creado.get("rol"),
+            "auth_id": usuario_creado.get("auth_id"),
+            "activo": usuario_creado.get("activo"),
+        },
+        "vehiculo": vehiculo_data,
+    }
     try:
         email = normalize_email(str(payload.correo))
         password = payload.contrasena.strip()
