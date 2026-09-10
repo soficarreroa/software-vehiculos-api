@@ -1,8 +1,9 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
 from datetime import datetime
 from database import client
+from dependencies import get_usuario_con_rol
 
 router = APIRouter()
 
@@ -37,11 +38,20 @@ class CotizacionDetalleResponse(CotizacionResponse):
     items: List[Dict[str, Any]] = []  # Detalles de los items
 
 @router.post("/cotizaciones/completa", response_model=CotizacionResponse)
-def create_cotizacion_completa(data: CotizacionCompletaCreate):
+def create_cotizacion_completa(
+    data: CotizacionCompletaCreate,
+    usuario: dict = Depends(get_usuario_con_rol),
+):
     """Crear una cotización completa con vehículo e items seleccionados"""
     try:
         # Verificar que el vehículo existe y pertenece al usuario
-        vehiculo = client.table("vehiculos").select("id, marca, modelo").eq("id", data.vehiculo_id).execute()
+        vehiculo = (
+            client.table("vehiculos")
+            .select("id, marca, modelo")
+            .eq("id", data.vehiculo_id)
+            .eq("usuario_id", usuario["id"])
+            .execute()
+        )
         if not vehiculo.data:
             raise HTTPException(status_code=404, detail="Vehículo no encontrado")
 
@@ -92,7 +102,7 @@ def create_cotizacion_completa(data: CotizacionCompletaCreate):
 
         # Preparar datos de la cotización
         cotizacion_data = {
-            "usuario_id": 1,  # Usuario de prueba
+            "usuario_id": usuario["id"],
             "vehiculo_id": data.vehiculo_id,
             "estado": "borrador",
             "monto_total": monto_total,
@@ -139,13 +149,12 @@ def create_cotizacion_completa(data: CotizacionCompletaCreate):
         raise HTTPException(status_code=500, detail=f"Error al crear cotización completa: {str(e)}")
 
 @router.get("/cotizaciones", response_model=List[CotizacionResponse])
-def get_cotizaciones_usuario():
+def get_cotizaciones_usuario(usuario: dict = Depends(get_usuario_con_rol)):
     """Obtener todas las cotizaciones del usuario actual"""
     try:
-        # Obtener cotizaciones del usuario (usuario_id = 1 por ahora)
         cotizaciones_response = client.table("cotizaciones").select(
             "id, vehiculo_id, estado, monto_total, moneda, fecha_incidente, observaciones, creado_en"
-        ).eq("usuario_id", 1).order("creado_en", desc=True).execute()
+        ).eq("usuario_id", usuario["id"]).order("creado_en", desc=True).execute()
 
         cotizaciones = []
         for cot in cotizaciones_response.data:
@@ -161,13 +170,16 @@ def get_cotizaciones_usuario():
         raise HTTPException(status_code=500, detail=f"Error al obtener cotizaciones: {str(e)}")
 
 @router.get("/cotizaciones/{cotizacion_id}", response_model=CotizacionDetalleResponse)
-def get_cotizacion_detalle(cotizacion_id: int):
+def get_cotizacion_detalle(
+    cotizacion_id: int,
+    usuario: dict = Depends(get_usuario_con_rol),
+):
     """Obtener detalles completos de una cotización"""
     try:
         # Obtener la cotización
         cotizacion_response = client.table("cotizaciones").select(
             "id, vehiculo_id, estado, monto_total, moneda, fecha_incidente, observaciones, creado_en"
-        ).eq("id", cotizacion_id).eq("usuario_id", 1).execute()
+        ).eq("id", cotizacion_id).eq("usuario_id", usuario["id"]).execute()
 
         if not cotizacion_response.data:
             raise HTTPException(status_code=404, detail="Cotización no encontrada")
