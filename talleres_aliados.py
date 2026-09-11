@@ -1,4 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
+from math import radians, sin, cos, sqrt, atan2
+
+from fastapi import APIRouter, Depends, HTTPException, Query
 from database import client
 from dependencies import requiere_rol
 
@@ -36,6 +38,64 @@ def create_taller(taller: dict):
     try:
         response = client.table("talleres").insert(taller).execute()
         return response.data[0]
+    except Exception as e:
+        print(f"ERROR: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def calcular_distancia_km(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+    """
+    Calcula la distancia en kilómetros entre dos puntos geográficos
+    usando la fórmula de Haversine (la estándar para distancias sobre
+    la superficie de la Tierra a partir de latitud/longitud).
+    """
+    radio_tierra_km = 6371.0
+
+    lat1_rad, lng1_rad = radians(lat1), radians(lng1)
+    lat2_rad, lng2_rad = radians(lat2), radians(lng2)
+
+    delta_lat = lat2_rad - lat1_rad
+    delta_lng = lng2_rad - lng1_rad
+
+    a = sin(delta_lat / 2) ** 2 + cos(lat1_rad) * cos(lat2_rad) * sin(delta_lng / 2) ** 2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+
+    return radio_tierra_km * c
+
+
+@router.get("/talleres/cercanos")
+def get_talleres_cercanos(
+    lat: float = Query(..., description="Latitud del usuario", ge=-90, le=90),
+    lng: float = Query(..., description="Longitud del usuario", ge=-180, le=180),
+):
+    """
+    Recibe la latitud y longitud del usuario y devuelve los talleres
+    que sí tienen coordenadas guardadas, ordenados del más cercano al
+    más lejano, con su distancia en kilómetros.
+    """
+    try:
+        response = client.table("talleres").select(
+            "id, nombre, direccion, telefono, email, marcas_soportadas, "
+            "lat, lng, certificado, notas, creado_en, categoria, rating, reviews"
+        ).execute()
+
+        talleres_con_distancia = []
+        for taller in response.data:
+            taller_lat = taller.get("lat")
+            taller_lng = taller.get("lng")
+
+            # Si el taller no tiene coordenadas guardadas, lo excluimos
+            # en vez de romper el endpoint por un dato faltante.
+            if taller_lat is None or taller_lng is None:
+                continue
+
+            distancia = calcular_distancia_km(lat, lng, taller_lat, taller_lng)
+            taller_con_distancia = {**taller, "distancia_km": round(distancia, 2)}
+            talleres_con_distancia.append(taller_con_distancia)
+
+        talleres_con_distancia.sort(key=lambda t: t["distancia_km"])
+
+        return talleres_con_distancia
     except Exception as e:
         print(f"ERROR: {e}")
         raise HTTPException(status_code=500, detail=str(e))
