@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field, validator
 from typing import Optional, Dict, Any
 from datetime import datetime
 from database import client
+from dependencies import get_usuario_con_rol
 
 router = APIRouter()
 
@@ -48,31 +49,25 @@ class VehicleResponse(BaseModel):
     class Config:
         from_attributes = True
 
-# Función auxiliar para obtener usuario (placeholder por ahora)
-def get_current_user_id() -> int:
-    # TODO: Implementar autenticación real
-    # Por ahora retorna None para pruebas sin usuario
-    return None
-
 @router.get("/vehiculos")
-def get_vehiculos():
+def get_vehiculos(usuario: dict = Depends(get_usuario_con_rol)):
     """Obtener todos los vehículos"""
     try:
         response = client.table("vehiculos").select(
             "id, placa, marca, modelo, color, extra, creado_en, actualizado_en"
-        ).execute()
+        ).eq("usuario_id", usuario["id"]).execute()
         return response.data
     except Exception as e:
         print(f"ERROR al obtener vehículos: {e}")
         raise HTTPException(status_code=500, detail=f"Error al obtener vehículos: {str(e)}")
 
 @router.get("/vehiculos/{vehicle_id}")
-def get_vehiculo(vehicle_id: int):
+def get_vehiculo(vehicle_id: int, usuario: dict = Depends(get_usuario_con_rol)):
     """Obtener un vehículo específico por ID"""
     try:
         response = client.table("vehiculos").select(
             "id, placa, marca, modelo, color, extra, creado_en, actualizado_en"
-        ).eq("id", vehicle_id).execute()
+        ).eq("id", vehicle_id).eq("usuario_id", usuario["id"]).execute()
 
         if not response.data:
             raise HTTPException(status_code=404, detail="Vehículo no encontrado")
@@ -85,12 +80,12 @@ def get_vehiculo(vehicle_id: int):
         raise HTTPException(status_code=500, detail=f"Error al obtener vehículo: {str(e)}")
 
 @router.post("/vehiculos")
-def create_vehiculo(vehicle: VehicleCreate):
+def create_vehiculo(vehicle: VehicleCreate, usuario: dict = Depends(get_usuario_con_rol)):
     """Crear un nuevo vehículo"""
     try:
         # Preparar datos para insertar
         vehicle_data = vehicle.dict()
-        vehicle_data["usuario_id"] = 1  # Se usa un usuario de prueba para cumplir la restricción NOT NULL
+        vehicle_data["usuario_id"] = usuario["id"]
         vehicle_data["creado_en"] = datetime.now().isoformat()
         vehicle_data["actualizado_en"] = datetime.now().isoformat()
 
@@ -108,16 +103,26 @@ def create_vehiculo(vehicle: VehicleCreate):
             status_code=500,
             detail=(
                 f"Error al crear vehículo: {str(e)}. "
-                "Asegúrate de que exista un usuario con usuario_id=1 en la tabla usuarios."
+                "Asegúrate de que el usuario autenticado exista en la tabla usuarios."
             )
         )
 
 @router.put("/vehiculos/{vehicle_id}")
-def update_vehiculo(vehicle_id: int, vehicle_update: VehicleUpdate):
+def update_vehiculo(
+    vehicle_id: int,
+    vehicle_update: VehicleUpdate,
+    usuario: dict = Depends(get_usuario_con_rol),
+):
     """Actualizar un vehículo existente"""
     try:
         # Verificar que el vehículo existe
-        existing = client.table("vehiculos").select("id").eq("id", vehicle_id).execute()
+        existing = (
+            client.table("vehiculos")
+            .select("id")
+            .eq("id", vehicle_id)
+            .eq("usuario_id", usuario["id"])
+            .execute()
+        )
 
         if not existing.data:
             raise HTTPException(status_code=404, detail="Vehículo no encontrado")
@@ -126,7 +131,13 @@ def update_vehiculo(vehicle_id: int, vehicle_update: VehicleUpdate):
         update_data = vehicle_update.dict()
         update_data["actualizado_en"] = datetime.now().isoformat()
 
-        response = client.table("vehiculos").update(update_data).eq("id", vehicle_id).execute()
+        response = (
+            client.table("vehiculos")
+            .update(update_data)
+            .eq("id", vehicle_id)
+            .eq("usuario_id", usuario["id"])
+            .execute()
+        )
 
         if not response.data:
             raise HTTPException(status_code=400, detail="No se pudo actualizar el vehículo")
@@ -139,17 +150,25 @@ def update_vehiculo(vehicle_id: int, vehicle_update: VehicleUpdate):
         raise HTTPException(status_code=500, detail=f"Error al actualizar vehículo: {str(e)}")
 
 @router.delete("/vehiculos/{vehicle_id}")
-def delete_vehiculo(vehicle_id: int):
+def delete_vehiculo(vehicle_id: int, usuario: dict = Depends(get_usuario_con_rol)):
     """Eliminar un vehículo"""
     try:
         # Verificar que el vehículo existe
-        existing = client.table("vehiculos").select("id").eq("id", vehicle_id).execute()
+        existing = (
+            client.table("vehiculos")
+            .select("id")
+            .eq("id", vehicle_id)
+            .eq("usuario_id", usuario["id"])
+            .execute()
+        )
 
         if not existing.data:
             raise HTTPException(status_code=404, detail="Vehículo no encontrado")
 
         # Eliminar el vehículo
-        response = client.table("vehiculos").delete().eq("id", vehicle_id).execute()
+        client.table("vehiculos").delete().eq("id", vehicle_id).eq(
+            "usuario_id", usuario["id"]
+        ).execute()
 
         return {"message": "Vehículo eliminado exitosamente", "id": vehicle_id}
     except HTTPException:

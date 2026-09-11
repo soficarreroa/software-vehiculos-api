@@ -1,8 +1,9 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
 from datetime import datetime
 from database import client
+from dependencies import get_usuario_con_rol
 
 router = APIRouter()
 
@@ -23,11 +24,20 @@ class PiezaDisponibleResponse(BaseModel):
         from_attributes = True
 
 @router.get("/vehiculos/{vehiculo_id}/piezas-disponibles", response_model=List[PiezaDisponibleResponse])
-def get_piezas_disponibles_vehiculo(vehiculo_id: int):
+def get_piezas_disponibles_vehiculo(
+    vehiculo_id: int,
+    usuario: dict = Depends(get_usuario_con_rol),
+):
     """Obtener piezas disponibles para un vehículo específico basado en su marca y modelo"""
     try:
         # Primero obtener la información del vehículo
-        vehiculo_response = client.table("vehiculos").select("marca, modelo").eq("id", vehiculo_id).execute()
+        vehiculo_response = (
+            client.table("vehiculos")
+            .select("marca, modelo")
+            .eq("id", vehiculo_id)
+            .eq("usuario_id", usuario["id"])
+            .execute()
+        )
 
         if not vehiculo_response.data:
             raise HTTPException(status_code=404, detail="Vehículo no encontrado")
