@@ -461,6 +461,43 @@ def login(payload: LoginSchema):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error al iniciar sesión: {str(exc)}",
         ) from exc
+
+class RefreshSchema(BaseModel):
+    refresh_token: str
+
+
+@router.post("/refresh", status_code=status.HTTP_200_OK)
+def refresh_token_endpoint(payload: RefreshSchema):
+    """Renueva el access_token usando el refresh_token, sin pedir contraseña de nuevo."""
+    try:
+        try:
+            auth_response = client.auth.refresh_session(payload.refresh_token)
+        except Exception:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="No se pudo renovar la sesión, inicia sesión de nuevo",
+            )
+
+        if not getattr(auth_response, "session", None):
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="No se pudo renovar la sesión, inicia sesión de nuevo",
+            )
+
+        session = auth_response.session
+        return {
+            "access_token": session.access_token,
+            "refresh_token": session.refresh_token,
+            "expires_in": session.expires_in,
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error al renovar la sesión: {str(exc)}",
+        ) from exc
+
 def get_usuario_actual(authorization: str = Header(...)) -> dict:
     """
     Valida el token que el frontend manda en el header:
