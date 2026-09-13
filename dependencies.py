@@ -1,16 +1,21 @@
 from fastapi import Depends, Header, HTTPException, status
 
-from database import client
+from database import client, create_user_client
 
 
-def get_usuario_con_rol(authorization: str = Header(...)) -> dict:
-    if not authorization.startswith("Bearer "):
+def get_usuario_con_rol(authorization: str | None = Header(None)) -> dict:
+    if not authorization or not authorization.startswith("Bearer "):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token no proporcionado",
         )
 
     token = authorization.split(" ", 1)[1]
+    if not token:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token no proporcionado",
+        )
 
     try:
         user_response = client.auth.get_user(token)
@@ -28,8 +33,9 @@ def get_usuario_con_rol(authorization: str = Header(...)) -> dict:
 
     auth_id = str(user_response.user.id)
 
+    scoped_client = create_user_client(token, token)
     usuario_result = (
-        client.table("usuarios")
+        scoped_client.table("usuarios")
         .select("id, correo, rol, activo")
         .eq("auth_id", auth_id)
         .execute()
