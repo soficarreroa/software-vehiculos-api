@@ -100,6 +100,40 @@ Tu API estará disponible en la URL que Render te proporcione.
 - `POST /api/v1/cotizaciones/completa` - Crea una cotización completa
 - `GET /api/v1/cotizaciones` - Lista todas las cotizaciones
 - `GET /api/v1/talleres` - Lista talleres aliados
+- `GET /api/v1/talleres/cercanos?lat={latitud}&lng={longitud}` - Lista talleres aliados ordenados por distancia
+
+### Talleres cercanos a la ubicación del usuario
+
+El cliente debe obtener la ubicación del dispositivo y enviar sus coordenadas
+como parámetros `lat` y `lng` al endpoint de talleres cercanos:
+
+```javascript
+navigator.geolocation.getCurrentPosition(async ({ coords }) => {
+   const params = new URLSearchParams({
+      lat: String(coords.latitude),
+      lng: String(coords.longitude),
+   });
+
+   const response = await fetch(
+      `${API_URL}/api/v1/talleres/cercanos?${params}`
+   );
+
+   if (!response.ok) {
+      throw new Error('No se pudieron obtener los talleres cercanos');
+   }
+
+   const talleres = await response.json();
+   // Cada taller incluye distancia_km y viene ordenado del más cercano al más lejano.
+}, (error) => {
+   console.error('No fue posible obtener la ubicación', error);
+}, {
+   enableHighAccuracy: true,
+});
+```
+
+La ubicación requiere permiso del usuario y debe solicitarse desde un contexto
+seguro (`https` o `localhost`). La API valida que `lat` esté entre `-90` y `90`
+y que `lng` esté entre `-180` y `180`.
 
 
 
