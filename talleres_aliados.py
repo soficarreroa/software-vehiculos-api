@@ -6,6 +6,8 @@ from dependencies import requiere_rol
 
 router = APIRouter()
 
+RADIO_MAXIMO_KM = 10.0
+
 @router.get("/marcas")
 def get_marcas():
     try:
@@ -78,8 +80,8 @@ def get_talleres_cercanos(
     lng: float = Query(..., description="Longitud del usuario", ge=-180, le=180),
 ):
     """
-    Recibe la latitud y longitud del usuario y devuelve los talleres
-    que sí tienen coordenadas guardadas, ordenados del más cercano al
+    Recibe la latitud y longitud del usuario y devuelve solo los talleres
+    que están a 10 km o menos de distancia, ordenados del más cercano al
     más lejano, con su distancia en kilómetros.
     """
     try:
@@ -88,7 +90,7 @@ def get_talleres_cercanos(
             "lat, lng, certificado, notas, creado_en, categoria, rating, reviews"
         ).execute()
 
-        talleres_con_distancia = []
+        talleres_cercanos = []
         for taller in response.data:
             taller_lat = taller.get("lat")
             taller_lng = taller.get("lng")
@@ -99,12 +101,17 @@ def get_talleres_cercanos(
                 continue
 
             distancia = calcular_distancia_km(lat, lng, taller_lat, taller_lng)
+
+            # Filtro: solo se devuelven los talleres dentro del radio máximo.
+            if distancia > RADIO_MAXIMO_KM:
+                continue
+
             taller_con_distancia = {**taller, "distancia_km": round(distancia, 2)}
-            talleres_con_distancia.append(taller_con_distancia)
+            talleres_cercanos.append(taller_con_distancia)
 
-        talleres_con_distancia.sort(key=lambda t: t["distancia_km"])
+        talleres_cercanos.sort(key=lambda t: t["distancia_km"])
 
-        return talleres_con_distancia
+        return talleres_cercanos
     except Exception as e:
         print(f"ERROR: {e}")
         raise HTTPException(status_code=500, detail=str(e))
