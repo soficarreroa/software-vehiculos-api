@@ -1,5 +1,6 @@
 from types import SimpleNamespace
 from typing import Any
+import os
 
 import bcrypt
 from fastapi import APIRouter, Depends, Header, HTTPException, status
@@ -13,6 +14,12 @@ if not hasattr(bcrypt, "__about__"):
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 router = APIRouter(prefix="/auth", tags=["auth"])
+
+# A diferencia de SUPABASE_URL/SUPABASE_KEY (hardcodeadas en database.py),
+# esta sí se lee de una variable de entorno, con localhost como valor por
+# defecto para que funcione sin configuración extra en desarrollo. En
+# producción hay que definir FRONTEND_URL (ej. https://software-vehiculos.vercel.app).
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
 
 def hash_password(password: str) -> str:
@@ -531,3 +538,73 @@ def get_usuario_actual(authorization: str = Header(...)) -> dict:
         )
 
     return user_response.user
+
+
+# --- Recuperación de contraseña ---
+
+class OlvideContrasenaSchema(BaseModel):
+    correo: EmailStr = Field(..., description="Correo del usuario que olvidó su contraseña")
+
+    model_config = ConfigDict(str_strip_whitespace=True, extra="forbid")
+
+
+@router.post("/olvide-contrasena", status_code=status.HTTP_200_OK)
+def olvide_contrasena(payload: OlvideContrasenaSchema):
+    """
+    Dispara el correo de recuperación de Supabase Auth, que lleva al
+    usuario a FRONTEND_URL/restablecer-contrasena con los tokens de
+    recuperación en el fragmento de la URL.
+
+    Responde con el mismo mensaje exista o no la cuenta: así no se puede
+    usar este endpoint para averiguar qué correos están registrados.
+    """
+    email = normalize_email(str(payload.correo))
+
+    try:
+        client.auth.reset_password_email(
+            email,
+            {"redirect_to": f"{FRONTEND_URL}/restablecer-contrasena"},
+        )
+    except Exception:
+        # No se distingue el motivo real (correo no existe, rate limit de
+        # Supabase, etc.): el mensaje de respuesta es siempre el mismo.
+        pass
+
+    return {
+        "message": "Si el correo está registrado, te enviamos instrucciones para restablecer la contraseña.",
+    }
+
+
+class RestablecerContrasenaSchema(BaseModel):
+    access_token: str = Field(..., description="access_token del enlace de recuperación")
+    refresh_token: str = Field(..., description="refresh_token del enlace de recuperación")
+    nueva_contrasena: str = Field(..., min_length=8, max_length=72)
+    confirmar_contrasena: str = Field(..., min_length=8, max_length=72)
+
+    model_config = ConfigDict(str_strip_whitespace=True, extra="forbid")
+
+    @model_validator(mode="after")
+    def validar_coincidencia(self) -> "RestablecerContrasenaSchema":
+        if self.nueva_contrasena != self.confirmar_contrasena:
+            raise ValueError("Las contraseñas no coinciden")
+        return self
+
+
+@router.post("/restablecer-contrasena", status_code=status.HTTP_200_OK)
+def restablecer_contrasena(payload: RestablecerContrasenaSchema):
+    """
+    Recibe los tokens que el frontend leyó del fragmento de la URL del
+    enlace de recuperación y los usa para autenticar la sesión antes de
+    cambiar la contraseña. Mismo patrón de create_user_client() que ya
+    usa /auth/login para las consultas con RLS del usuario.
+    """
+    try:
+        scoped_client = create_user_client(payload.access_token, payload.refresh_token)
+        scoped_client.auth.update_user({"password": payload.nueva_contrasena})
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="El enlace de recuperación no es válido o ya expiró. Solicita uno nuevo.",
+        ) from exc
+
+    return {"message": "Contraseña actualizada correctamente. Ya puedes iniciar sesión."}
