@@ -141,4 +141,3 @@ El dataset, los comandos para continuar el entrenamiento y su atribución están
 documentados en [ENTRENAMIENTO_YOLO.md](ENTRENAMIENTO_YOLO.md).
 
 
-
