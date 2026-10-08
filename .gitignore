@@ -156,7 +156,6 @@ yolov8n-cls.pt
 yolov8n-seg.pt
 yolov8n.pt
 resultados_deteccion/
-
 # Spyder project settings
 .spyderproject
 .spyproject
