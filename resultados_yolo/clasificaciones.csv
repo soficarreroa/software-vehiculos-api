@@ -1,0 +1,7 @@
+﻿imagen,etiqueta_real,clase_predicha,confianza
+dataset_clasificacion/test/abolladura/moderado__002.jpg,abolladura,golpe_estructural,0.698105
+dataset_clasificacion/test/abolladura/moderado__003.jpeg,abolladura,golpe_estructural,0.651807
+dataset_clasificacion/test/golpe_estructural/severo__004.jpg,golpe_estructural,golpe_estructural,0.883778
+dataset_clasificacion/test/rayon/leve__002.jpeg,rayon,abolladura,0.365265
+dataset_clasificacion/test/rayon/leve__006.jpeg,rayon,rayon,0.980322
+dataset_clasificacion/test/rotura/severo__002.jpg,rotura,abolladura,0.614384
