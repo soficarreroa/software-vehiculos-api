@@ -135,5 +135,9 @@ La ubicación requiere permiso del usuario y debe solicitarse desde un contexto
 seguro (`https` o `localhost`). La API valida que `lat` esté entre `-90` y `90`
 y que `lng` esté entre `-180` y `180`.
 
+## Entrenamiento del modelo de daños
+
+El dataset, los comandos para continuar el entrenamiento y su atribución están
+documentados en [ENTRENAMIENTO_YOLO.md](ENTRENAMIENTO_YOLO.md).
 
 
