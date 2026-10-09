@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['Broken glass', 'Dent', 'Scratch', 'front-end-damage', 'rear-end-damage', 'side-impact-damage']
+
+roboflow:
+  workspace: car-damage-kadad
+  project: car-damage-images
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/car-damage-kadad/car-damage-images/dataset/3

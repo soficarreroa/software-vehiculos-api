@@ -149,6 +149,13 @@ ENV/
 env.bak/
 venv.bak/
 
+# Generated YOLO datasets, weights, and training runs
+dataset_clasificacion/
+runs/
+yolov8n-cls.pt
+yolov8n-seg.pt
+yolov8n.pt
+resultados_deteccion/
 # Spyder project settings
 .spyderproject
 .spyproject
