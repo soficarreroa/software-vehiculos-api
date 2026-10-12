@@ -29,7 +29,7 @@ git push origin main
 4. Configura:
    - **Runtime**: Python 3
    - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 
 ### 4. Variables de entorno
 
@@ -81,7 +81,7 @@ Tu API estará disponible en la URL que Render te proporcione.
 
 6. **Ejecuta el servidor**
    ```bash
-   uvicorn main:app --reload --host 0.0.0.0 --port 8000
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
    ```
 
 7. **Prueba**

@@ -217,3 +217,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Dataset CarDD y resultados locales
+carsdd/
+resultados_cardd/
+
+ml/resultados/severidad/fotos/
+
+ml/resultados/severidad/fotos/
+
+ml/resultados/severidad/fotos/
