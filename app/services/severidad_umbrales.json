@@ -1,0 +1,36 @@
+{
+  "metodo": "terciles del area relativa (area del dano / area de la imagen) por clase, solo train de CarDD",
+  "advertencia": "Linea base por tamano; validar con etiquetas manuales antes de usar en cotizaciones.",
+  "umbrales": {
+    "crack": {
+      "leve_hasta": 0.001192,
+      "moderado_hasta": 0.004079,
+      "n": 626
+    },
+    "dent": {
+      "leve_hasta": 0.029891,
+      "moderado_hasta": 0.088569,
+      "n": 1777
+    },
+    "glass shatter": {
+      "leve_hasta": 0.42054,
+      "moderado_hasta": 0.649259,
+      "n": 477
+    },
+    "lamp broken": {
+      "leve_hasta": 0.080141,
+      "moderado_hasta": 0.1902,
+      "n": 498
+    },
+    "scratch": {
+      "leve_hasta": 0.01432,
+      "moderado_hasta": 0.052931,
+      "n": 2521
+    },
+    "tire flat": {
+      "leve_hasta": 0.208431,
+      "moderado_hasta": 0.356392,
+      "n": 222
+    }
+  }
+}
