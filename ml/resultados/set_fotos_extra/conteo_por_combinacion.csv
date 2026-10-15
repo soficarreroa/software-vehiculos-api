@@ -1,0 +1,13 @@
+﻿tipo,severidad,fotos,faltan_para_10
+abolladura,leve,5,5
+abolladura,moderado,4,6
+abolladura,severo,4,6
+rayon,leve,8,2
+rayon,moderado,2,8
+rayon,severo,0,10
+rotura,leve,1,9
+rotura,moderado,1,9
+rotura,severo,2,8
+golpe_estructural,leve,0,10
+golpe_estructural,moderado,1,9
+golpe_estructural,severo,8,2
