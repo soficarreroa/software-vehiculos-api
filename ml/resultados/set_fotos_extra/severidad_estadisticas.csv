@@ -1,0 +1,4 @@
+﻿severidad_esperada,n,promedio,minimo,maximo
+leve,7,0.0485,0.0038,0.1793
+moderado,8,0.1772,0.0322,0.8846
+severo,11,0.1763,0.0122,0.6771

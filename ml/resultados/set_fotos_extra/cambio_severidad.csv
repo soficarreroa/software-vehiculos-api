@@ -1,0 +1,26 @@
+﻿archivo,clase,area_relativa,severidad_detectada_actual,severidad_recalculada,coincide_detectada
+abolladura/leve/001.jpg,dent,0.0038,leve,leve,True
+abolladura/leve/002.jpg,scratch,0.026,moderado,moderado,True
+abolladura/leve/003.jpg,lamp broken,0.0206,leve,leve,True
+abolladura/moderado/001.jpg,scratch,0.0428,moderado,moderado,True
+abolladura/moderado/002.jpg,lamp broken,0.0322,leve,moderado,False
+abolladura/moderado/003.jpeg,lamp broken,0.0363,leve,moderado,False
+abolladura/severo/001.jpg,dent,0.026,leve,leve,True
+abolladura/severo/002.jpg,dent,0.2285,grave,grave,True
+abolladura/severo/004.jpg,dent,0.0872,moderado,grave,False
+golpe_estructural/moderado/001.jpg,lamp broken,0.0892,moderado,grave,False
+golpe_estructural/severo/001.jpg,lamp broken,0.0122,leve,leve,True
+golpe_estructural/severo/002.jpg,dent,0.1028,grave,grave,True
+golpe_estructural/severo/003.jpg,dent,0.0779,moderado,moderado,True
+golpe_estructural/severo/004.jpg,lamp broken,0.0216,leve,leve,True
+golpe_estructural/severo/006.jpg,lamp broken,0.0387,leve,moderado,False
+golpe_estructural/severo/007.jpg,lamp broken,0.1217,moderado,grave,False
+rayon/leve/002.jpeg,scratch,0.0059,leve,leve,True
+rayon/leve/003.jpeg,dent,0.1793,grave,grave,True
+rayon/leve/008.jpeg,scratch,0.0171,moderado,leve,False
+rayon/moderado/001.jpg,scratch,0.1441,grave,grave,True
+rayon/moderado/002.jpg,scratch,0.0388,moderado,moderado,True
+rotura/leve/001.jpg,scratch,0.0871,grave,grave,True
+rotura/moderado/001.jpg,glass shatter,0.8846,grave,grave,True
+rotura/severo/001.jpg,glass shatter,0.5458,moderado,moderado,True
+rotura/severo/002.jpg,glass shatter,0.6771,grave,grave,True

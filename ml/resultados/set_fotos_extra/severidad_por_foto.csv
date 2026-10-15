@@ -1,0 +1,27 @@
+﻿archivo,clase_modelo,tipo_detectado,area_relativa,severidad_esperada,severidad_detectada
+abolladura/leve/001.jpg,dent,abolladura,0.0038,leve,leve
+abolladura/leve/002.jpg,scratch,rayon,0.026,leve,moderado
+abolladura/leve/003.jpg,lamp broken,rotura,0.0206,leve,leve
+abolladura/moderado/001.jpg,scratch,rayon,0.0428,moderado,moderado
+abolladura/moderado/002.jpg,lamp broken,rotura,0.0322,moderado,leve
+abolladura/moderado/003.jpeg,lamp broken,rotura,0.0363,moderado,leve
+abolladura/moderado/004.jpg,tire flat,sin_equivalente,0.1494,moderado,leve
+abolladura/severo/001.jpg,dent,abolladura,0.026,severo,leve
+abolladura/severo/002.jpg,dent,abolladura,0.2285,severo,severo
+abolladura/severo/004.jpg,dent,abolladura,0.0872,severo,moderado
+golpe_estructural/moderado/001.jpg,lamp broken,rotura,0.0892,moderado,moderado
+golpe_estructural/severo/001.jpg,lamp broken,rotura,0.0122,severo,leve
+golpe_estructural/severo/002.jpg,dent,abolladura,0.1028,severo,severo
+golpe_estructural/severo/003.jpg,dent,abolladura,0.0779,severo,moderado
+golpe_estructural/severo/004.jpg,lamp broken,rotura,0.0216,severo,leve
+golpe_estructural/severo/006.jpg,lamp broken,rotura,0.0387,severo,leve
+golpe_estructural/severo/007.jpg,lamp broken,rotura,0.1217,severo,moderado
+rayon/leve/002.jpeg,scratch,rayon,0.0059,leve,leve
+rayon/leve/003.jpeg,dent,abolladura,0.1793,leve,severo
+rayon/leve/008.jpeg,scratch,rayon,0.0171,leve,moderado
+rayon/moderado/001.jpg,scratch,rayon,0.1441,moderado,severo
+rayon/moderado/002.jpg,scratch,rayon,0.0388,moderado,moderado
+rotura/leve/001.jpg,scratch,rayon,0.0871,leve,severo
+rotura/moderado/001.jpg,glass shatter,rotura,0.8846,moderado,severo
+rotura/severo/001.jpg,glass shatter,rotura,0.5458,severo,moderado
+rotura/severo/002.jpg,glass shatter,rotura,0.6771,severo,severo

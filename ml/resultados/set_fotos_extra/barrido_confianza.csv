@@ -1,0 +1,6 @@
+﻿umbral,fotos_sin_deteccion,acierto_tipo,acierto_severidad,acierto_completo,total_detecciones,fotos
+0.1,3,14,12,7,110,36
+0.15,5,14,12,7,75,36
+0.25,10,11,9,5,45,36
+0.35,14,9,7,3,33,36
+0.5,19,7,4,2,21,36
