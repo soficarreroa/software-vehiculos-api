@@ -1,0 +1,10 @@
+﻿umbral,relacion,clase,detecciones_nuevas
+0.1,0.1 vs 0.25,crack,4
+0.1,0.1 vs 0.25,dent,22
+0.1,0.1 vs 0.25,glass shatter,1
+0.1,0.1 vs 0.25,lamp broken,6
+0.1,0.1 vs 0.25,scratch,32
+0.15,0.15 vs 0.25,crack,2
+0.15,0.15 vs 0.25,dent,11
+0.15,0.15 vs 0.25,lamp broken,4
+0.15,0.15 vs 0.25,scratch,13

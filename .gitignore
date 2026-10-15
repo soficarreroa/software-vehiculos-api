@@ -227,3 +227,6 @@ ml/resultados/severidad/fotos/
 ml/resultados/severidad/fotos/
 
 ml/resultados/severidad/fotos/
+
+# Resultados locales del script de prueba sobre un set de fotos
+ml/resultados/set_fotos/
