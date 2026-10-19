@@ -1,21 +1,21 @@
-from fastapi import Depends, Header, HTTPException, status
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from app.core.database import client, create_user_client
 
+bearer_scheme = HTTPBearer(auto_error=False)
 
-def get_usuario_con_rol(authorization: str | None = Header(None)) -> dict:
-    if not authorization or not authorization.startswith("Bearer "):
+
+def get_usuario_con_rol(
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
+) -> dict:
+    if credentials is None or credentials.scheme.lower() != "bearer" or not credentials.credentials:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token no proporcionado",
         )
 
-    token = authorization.split(" ", 1)[1]
-    if not token:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token no proporcionado",
-        )
+    token = credentials.credentials
 
     try:
         user_response = client.auth.get_user(token)
