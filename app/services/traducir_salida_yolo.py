@@ -12,8 +12,12 @@ una severidad preliminar (leve / moderado / grave) por tamano relativo del dano
 
 import json
 import sys
+from functools import lru_cache
+from io import BytesIO
 from pathlib import Path
+from threading import Lock
 
+from PIL import Image
 from ultralytics import YOLO
 
 try:
@@ -27,6 +31,7 @@ MODEL_PATH = BASE_DIR / "models" / "segmentador_cardd" / "best.pt"
 
 # Tamano de imagen con el que se entreno el modelo; debe ser el mismo al predecir.
 IMGSZ = 320
+_PREDICTION_LOCK = Lock()
 
 # Clase del modelo (CarDD) -> tipo de dano del proyecto (tabla de costos).
 TIPOS_DANO = {
@@ -37,6 +42,14 @@ TIPOS_DANO = {
     "scratch": "rayon",
     "tire flat": "llanta_baja",
 }
+
+
+@lru_cache(maxsize=1)
+def cargar_modelo():
+    """Carga una sola instancia del modelo por proceso."""
+    if not MODEL_PATH.is_file():
+        raise FileNotFoundError(f"No se encontró el modelo YOLO: {MODEL_PATH}")
+    return YOLO(str(MODEL_PATH))
 
 
 def calcular_area_relativa(result, indice, caja):
@@ -102,15 +115,37 @@ def traducir_imagen(ruta_imagen, modelo=None, confianza_minima=0.25):
     la lista de tipos de dano encontrados en la foto.
     """
     if modelo is None:
-        modelo = YOLO(str(MODEL_PATH))
+        modelo = cargar_modelo()
 
-    resultado = modelo.predict(
-        source=str(ruta_imagen), conf=confianza_minima, imgsz=IMGSZ, verbose=False
-    )[0]
+    with _PREDICTION_LOCK:
+        resultado = modelo.predict(
+            source=str(ruta_imagen), conf=confianza_minima, imgsz=IMGSZ, verbose=False
+        )[0]
 
     danos = traducir_resultado(resultado)
     return {
         "imagen": str(ruta_imagen),
+        "tipos_detectados": sorted({dano["tipo_dano"] for dano in danos}),
+        "danos_detectados": danos,
+    }
+
+
+def traducir_imagen_bytes(contenido, nombre_imagen, modelo=None, confianza_minima=0.25):
+    """Analiza bytes de imagen sin guardarlos en disco."""
+    if modelo is None:
+        modelo = cargar_modelo()
+
+    with Image.open(BytesIO(contenido)) as imagen:
+        imagen_rgb = imagen.convert("RGB")
+
+    with _PREDICTION_LOCK:
+        resultado = modelo.predict(
+            source=imagen_rgb, conf=confianza_minima, imgsz=IMGSZ, verbose=False
+        )[0]
+
+    danos = traducir_resultado(resultado)
+    return {
+        "imagen": nombre_imagen,
         "tipos_detectados": sorted({dano["tipo_dano"] for dano in danos}),
         "danos_detectados": danos,
     }
