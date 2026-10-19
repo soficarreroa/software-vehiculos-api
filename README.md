@@ -98,9 +98,26 @@ Tu API estará disponible en la URL que Render te proporcione.
 - `DELETE /api/v1/vehiculos/{id}` - Elimina un vehículo
 - `GET /api/v1/vehiculos/{id}/piezas-disponibles` - Piezas disponibles para un vehículo
 - `POST /api/v1/cotizaciones/completa` - Crea una cotización completa
+- `POST /api/v1/analisis/danos` - Analiza una imagen de vehículo con YOLO (requiere autenticación)
 - `GET /api/v1/cotizaciones` - Lista todas las cotizaciones
 - `GET /api/v1/talleres` - Lista talleres aliados
 - `GET /api/v1/talleres/cercanos?lat={latitud}&lng={longitud}` - Lista talleres aliados ordenados por distancia
+
+### Analizar daños en una imagen
+
+El endpoint recibe una imagen JPEG, PNG o WEBP como `multipart/form-data`.
+Requiere el token de acceso del usuario autenticado y acepta archivos de hasta
+10 MB y 40 megapíxeles. En `/docs`, usa el botón **Authorize** e ingresa el
+token de acceso sin comillas ni el prefijo `Bearer`; Swagger agrega ese prefijo
+al encabezado automáticamente. No guarda la imagen: devuelve los tipos de daño
+detectados y los detalles disponibles para cada uno, incluyendo confianza,
+ubicación, severidad estimada y etiqueta de costo.
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/analisis/danos" \
+  -H "Authorization: Bearer <TOKEN>" \
+  -F "imagen=@foto.jpg"
+```
 
 ### Talleres cercanos a la ubicación del usuario
 
@@ -137,7 +154,5 @@ y que `lng` esté entre `-180` y `180`.
 
 ## Entrenamiento del modelo de daños
 
-El dataset, los comandos para continuar el entrenamiento y su atribución están
-documentados en [ENTRENAMIENTO_YOLO.md](ENTRENAMIENTO_YOLO.md).
-
-
+El dataset, los comandos para reproducir el entrenamiento y su atribución están
+documentados en [ENTRENAMIENTO_CARDD.md](ml/ENTRENAMIENTO_CARDD.md).
