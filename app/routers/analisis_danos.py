@@ -51,7 +51,12 @@ async def analizar_danos(
             formato_real = archivo_imagen.format
             ancho, alto = archivo_imagen.size
             archivo_imagen.verify()
-    except (UnidentifiedImageError, OSError, Image.DecompressionBombError) as error:
+    except (UnidentifiedImageError, OSError, Image.DecompressionBombError, ModuleNotFoundError) as error:
+        # ModuleNotFoundError: ultralytics parchea PIL.Image.open para reintentar
+        # archivos no identificados como HEIF (via pi-heif, que no instalamos). Si el
+        # archivo tampoco es un HEIF valido, ese reintento falla con ModuleNotFoundError
+        # en vez de UnidentifiedImageError, y sin este catch se escapaba como 500 sin
+        # control en vez del 400 que esta pensado para un archivo invalido.
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="El archivo no contiene una imagen válida",
