@@ -119,6 +119,69 @@ curl -X POST "http://localhost:8000/api/v1/analisis/danos" \
   -F "imagen=@foto.jpg"
 ```
 
+**Respuesta exitosa (200)** — si no se encontró ningún daño, `danos_detectados` viene vacía y `mensaje` trae
+`"No se detectaron daños en la foto"` (cuando sí hay daños, `mensaje` es `null`):
+
+```json
+{
+  "imagen": "foto.jpg",
+  "mensaje": null,
+  "tipos_detectados": ["vidrio_roto"],
+  "danos_detectados": [
+    {
+      "tipo_dano": "vidrio_roto",
+      "clase_yolo": "glass shatter",
+      "confianza": 0.943,
+      "ubicacion": { "x1": 0.0, "y1": 14.2, "x2": 624.4, "y2": 406.1 },
+      "ancho": 624.4,
+      "alto": 391.9,
+      "tiene_contorno": true,
+      "area_relativa": 0.871,
+      "severidad": "grave",
+      "etiqueta_costo": "vidrio_roto_grave"
+    }
+  ]
+}
+```
+
+`tipo_dano` puede ser `abolladura`, `rayon`, `grieta`, `vidrio_roto`, `luz_rota` o `llanta_baja`.
+`severidad` es `leve`, `moderado` o `grave` (puede venir `null` si no hay umbrales calculados).
+`etiqueta_costo` combina `tipo_dano` y `severidad` (ej. `vidrio_roto_grave`) y es la clave pensada
+para cruzar contra la tabla de costos — **todavía no hay un endpoint que haga ese cruce
+automáticamente** (ver "Pendiente" más abajo).
+
+**Errores posibles:**
+
+| Código | Causa | Detalle que devuelve |
+|---|---|---|
+| 400 | Imagen vacía (0 bytes) | `La imagen está vacía` |
+| 400 | El archivo no es una imagen válida o está corrupto | `El archivo no contiene una imagen válida` |
+| 401 | Falta el token o es inválido/expirado | `Token no proporcionado` / `Token inválido o expirado` |
+| 404 | El token es válido pero el usuario no existe en la tabla `usuarios` | `Usuario autenticado pero no encontrado en la base de datos` |
+| 413 | La imagen pesa más de 10 MB, o tiene más de 40 megapíxeles | `La imagen supera el límite de 10 MB` / `...40 megapíxeles` |
+| 415 | El `Content-Type` no es JPEG/PNG/WEBP, o no coincide con el contenido real del archivo | `Formato no permitido...` / `El tipo de contenido no coincide...` |
+| 422 | La foto no es lo bastante clara: tiene menos de 200 px por lado, o está borrosa / sin detalle | `La foto tiene muy poca resolución...` / `La foto está borrosa o poco clara. Toma otra con buena luz, enfocada y más cerca del daño` |
+| 503 | El modelo (`models/segmentador_cardd/best.pt`) no está disponible en el servidor | `El modelo de análisis de daños no está disponible` |
+| 500 | Error inesperado al correr el modelo | `No se pudo completar el análisis de daños` |
+
+**Qué tan bien detecta daños (resultado real de las pruebas, semana 10):** el modelo
+se evaluó formalmente contra 399 fotos de prueba de CarDD (ver
+[ENTRENAMIENTO_CARDD.md](ml/ENTRENAMIENTO_CARDD.md)): **F1 macro 0.616**. Por tipo de daño
+el desempeño es muy desigual — `glass shatter` (vidrio roto) y `tire flat` (llanta baja) se
+detectan bien (F1 0.96 y 0.89), pero `crack` (grieta) y `scratch` (rayón) todavía fallan mucho
+(F1 0.19 y 0.45: se le escapan muchos rayones y grietas reales). Antes de confiar el estimado de
+costo a esto, conviene que el equipo decida si ese nivel de precisión es aceptable para producción
+o si hace falta más entrenamiento/dataset, sobre todo para rayón y grieta.
+
+**Calidad de la foto:** antes de correr el modelo se revisa que la foto sea usable
+(`app/services/calidad_imagen.py`): lado menor de al menos 200 px y nitidez medida con la varianza del
+Laplaciano (umbral 10, calibrado con las fotos de `ml/resultados/set_fotos_extra/`; conviene recalibrarlo
+con un set de fotos limpias). Una foto sin daños **no** es un error: responde 200 con el `mensaje` indicado arriba.
+
+**Pendiente:** este endpoint solo detecta y clasifica daños — no calcula ningún costo. Cruzar
+`etiqueta_costo` con el catálogo real de precios (tablas `piezas` y `catalogo_precios`) y sumar
+un estimado total todavía no está implementado.
+
 ### Talleres cercanos a la ubicación del usuario
 
 El cliente debe obtener la ubicación del dispositivo y enviar sus coordenadas

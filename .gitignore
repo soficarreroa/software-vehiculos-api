@@ -230,3 +230,4 @@ ml/resultados/severidad/fotos/
 
 # Resultados locales del script de prueba sobre un set de fotos
 ml/resultados/set_fotos/
+tests/resultados_prueba_endpoint*.csv
