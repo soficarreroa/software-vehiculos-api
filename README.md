@@ -98,6 +98,7 @@ Tu API estará disponible en la URL que Render te proporcione.
 - `DELETE /api/v1/vehiculos/{id}` - Elimina un vehículo
 - `GET /api/v1/vehiculos/{id}/piezas-disponibles` - Piezas disponibles para un vehículo
 - `POST /api/v1/cotizaciones/completa` - Crea una cotización completa
+- `POST /api/v1/cotizaciones/estimar` - Calcula un estimado de reparación sin guardarlo
 - `POST /api/v1/analisis/danos` - Analiza una imagen de vehículo con YOLO (requiere autenticación)
 - `GET /api/v1/cotizaciones` - Lista todas las cotizaciones
 - `GET /api/v1/talleres` - Lista talleres aliados
@@ -146,9 +147,9 @@ curl -X POST "http://localhost:8000/api/v1/analisis/danos" \
 
 `tipo_dano` puede ser `abolladura`, `rayon`, `grieta`, `vidrio_roto`, `luz_rota` o `llanta_baja`.
 `severidad` es `leve`, `moderado` o `grave` (puede venir `null` si no hay umbrales calculados).
-`etiqueta_costo` combina `tipo_dano` y `severidad` (ej. `vidrio_roto_grave`) y es la clave pensada
-para cruzar contra la tabla de costos — **todavía no hay un endpoint que haga ese cruce
-automáticamente** (ver "Pendiente" más abajo).
+`etiqueta_costo` combina `tipo_dano` y `severidad` (ej. `vidrio_roto_grave`).
+YOLO no identifica la pieza afectada: para estimar un costo hay que asignarla
+explícitamente con el endpoint de estimación descrito más abajo.
 
 **Errores posibles:**
 
@@ -178,9 +179,84 @@ o si hace falta más entrenamiento/dataset, sobre todo para rayón y grieta.
 Laplaciano (umbral 10, calibrado con las fotos de `ml/resultados/set_fotos_extra/`; conviene recalibrarlo
 con un set de fotos limpias). Una foto sin daños **no** es un error: responde 200 con el `mensaje` indicado arriba.
 
-**Pendiente:** este endpoint solo detecta y clasifica daños — no calcula ningún costo. Cruzar
-`etiqueta_costo` con el catálogo real de precios (tablas `piezas` y `catalogo_precios`) y sumar
-un estimado total todavía no está implementado.
+Este endpoint solo detecta y clasifica daños; no calcula costos por sí mismo.
+La estimación se hace con `POST /api/v1/cotizaciones/estimar`.
+
+### Estimar la reparación
+
+`POST /api/v1/cotizaciones/estimar` calcula un rango de reparación en COP para
+tres tipos de establecimiento: `economico`, `multimarca` y `concesionario`.
+Requiere autenticación, valida que el vehículo pertenezca al usuario y **no
+guarda la cotización ni escribe en Supabase**.
+
+El catálogo usado es `data/precios_reparacion_vehiculos.csv` (945 filas, precios
+de referencia para 3 marcas, 21 modelos y 5 categorías de pieza). No se consulta
+la tabla `catalogo_precios` para este cálculo.
+
+**Asignación de piezas:** la lista `asignaciones` relaciona cada índice de daño
+con una pieza. Se aceptan las cinco categorías del CSV y estos nombres reales de
+la tabla `piezas`:
+
+| Nombre real | Categoría del CSV |
+|---|---|
+| `Parachoques Delantero` | `Bumper delantero` |
+| `Parachoques Trasero` | `Bumper trasero` |
+| `Guardabarros Delantero Derecho` | `Guardabarros` |
+| `Puerta Delantera Izquierda` | `Puerta` |
+| `Capó` | `Capó` |
+
+Las demás piezas reales (`Faro Principal Derecho`, `Puerta Maletero`,
+`Airbag de Volante`, etc.) no tienen equivalencia y quedan pendientes. La
+respuesta conserva el nombre original en `pieza_original` y usa `pieza` para la
+categoría del CSV. Cuando son distintas, `es_categoria_generica` es `true` y se
+incluye una advertencia: el valor es una referencia de categoría, no una
+cotización exacta de esa pieza específica.
+
+```bash
+curl -X POST "http://localhost:8000/api/v1/cotizaciones/estimar" \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "vehiculo_id": 1,
+    "danos": [
+      {"tipo_dano": "rayon", "severidad": "moderado", "confianza": 0.91}
+    ],
+    "asignaciones": [
+      {"indice_dano": 0, "pieza": "Parachoques Delantero"}
+    ]
+  }'
+```
+
+La respuesta incluye `desglose` por categoría de pieza, `precios` por
+establecimiento, `totales`, `danos_no_estimados`, `danos_ignorados`,
+`piezas_sin_precio`, `advertencias` y `nota`. También informa `marca_csv`,
+`modelo_csv`, `anio_detectado` y `coincidencia_modelo` (`exacta` o
+`modelo_base`). Los totales se redondean al múltiplo de COP 10.000 más cercano y
+solo se consideran completos cuando todos los daños y todas las piezas tienen
+precio.
+
+**Vehículos y años:** marca y modelo se comparan normalizando mayúsculas,
+espacios y acentos. Si el modelo del vehículo termina en un año explícito
+(`2023`, `2020`, etc.) y el CSV tiene el modelo base sin año, se usa ese modelo
+como referencia aproximada y se informa en `advertencias` que el precio no es
+específico del año. Si la correspondencia no es inequívoca, el daño queda
+pendiente; no se corrigen errores ortográficos ni se inventan modelos o precios.
+
+Limitaciones actuales:
+
+- El CSV cubre menos vehículos que la base de datos; los vehículos no
+  reconocidos quedan pendientes.
+- La categoría de pieza puede ser más general que el nombre real de la pieza.
+- Varios daños de la misma categoría se agrupan y se cobran una sola vez con la
+  severidad más alta.
+- No se incluyen mano de obra, pintura ni repuestos adicionales distintos de los
+  rangos del CSV.
+
+**Pruebas específicas:**
+
+```bash
+python -m pytest tests/test_estimacion_reparacion.py -q
+```
 
 ### Talleres cercanos a la ubicación del usuario
 

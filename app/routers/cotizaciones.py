@@ -1,9 +1,14 @@
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel, Field
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any, Literal
 from datetime import datetime
 from app.core.database import client
 from app.core.dependencies import get_usuario_con_rol
+from app.services.estimacion_reparacion import (
+    AsignacionesInvalidas,
+    CatalogoPreciosError,
+    estimar_reparacion,
+)
 
 router = APIRouter()
 
@@ -36,6 +41,156 @@ class CotizacionResponse(BaseModel):
 
 class CotizacionDetalleResponse(CotizacionResponse):
     items: List[Dict[str, Any]] = []  # Detalles de los items
+
+
+class DanoParaEstimar(BaseModel):
+    tipo_dano: str = Field(..., min_length=1, description="Tipo de daño detectado")
+    severidad: Optional[Literal["leve", "moderado", "grave"]] = Field(
+        None, description="Severidad detectada o asignada al daño"
+    )
+    confianza: float = Field(..., ge=0, le=1, description="Confianza de la detección")
+
+
+class AsignacionPieza(BaseModel):
+    indice_dano: int = Field(..., ge=0, description="Índice del daño en la lista")
+    pieza: str = Field(..., min_length=1, description="Pieza afectada del catálogo")
+
+
+class EstimacionCreate(BaseModel):
+    vehiculo_id: int = Field(..., gt=0, description="ID del vehículo")
+    danos: List[DanoParaEstimar] = Field(default_factory=list)
+    asignaciones: List[AsignacionPieza] = Field(default_factory=list)
+
+
+class RangoPrecioEstimado(BaseModel):
+    minimo_cop: int
+    maximo_cop: int
+
+
+class PreciosPorEstablecimiento(BaseModel):
+    economico: Optional[RangoPrecioEstimado] = None
+    multimarca: Optional[RangoPrecioEstimado] = None
+    concesionario: Optional[RangoPrecioEstimado] = None
+
+
+class DanoAsociadoEstimacion(BaseModel):
+    indice_dano: int
+    tipo_dano: Optional[str] = None
+    confianza: Optional[float] = None
+    severidad: Optional[str] = None
+    pieza_original: Optional[str] = None
+
+
+class DesglosePiezaEstimada(BaseModel):
+    pieza: str
+    pieza_original: str
+    piezas_originales: List[str]
+    es_categoria_generica: bool
+    severidad: str
+    danos: List[DanoAsociadoEstimacion]
+    precios: PreciosPorEstablecimiento
+    establecimientos_sin_precio: List[str]
+    estimado: bool
+
+
+class TotalEstablecimiento(BaseModel):
+    minimo_cop: Optional[int]
+    maximo_cop: Optional[int]
+    completo: bool
+    piezas_no_estimadas: List[str]
+
+
+class TotalesEstimacion(BaseModel):
+    economico: TotalEstablecimiento
+    multimarca: TotalEstablecimiento
+    concesionario: TotalEstablecimiento
+
+
+class DanoNoEstimado(BaseModel):
+    indice_dano: int
+    tipo_dano: Optional[str] = None
+    severidad: Optional[str] = None
+    pieza_original: Optional[str] = None
+    motivo: str
+
+
+class DanoIgnorado(BaseModel):
+    indice_dano: int
+    tipo_dano: Optional[str] = None
+    confianza: float
+    pieza_original: Optional[str] = None
+    motivo: str
+
+
+class PiezaSinPrecio(BaseModel):
+    pieza: str
+    pieza_original: str
+    piezas_originales: List[str]
+    es_categoria_generica: bool
+    severidad: str
+    establecimientos: List[str]
+
+
+class EstimacionResponse(BaseModel):
+    vehiculo_id: int
+    marca: Optional[str]
+    modelo: Optional[str]
+    marca_csv: Optional[str]
+    modelo_csv: Optional[str]
+    anio_detectado: Optional[int]
+    coincidencia_modelo: Optional[Literal["exacta", "modelo_base"]]
+    moneda: str
+    desglose: List[DesglosePiezaEstimada]
+    totales: TotalesEstimacion
+    danos_no_estimados: List[DanoNoEstimado]
+    danos_ignorados: List[DanoIgnorado]
+    piezas_sin_precio: List[PiezaSinPrecio]
+    advertencias: List[str]
+    nota: str
+
+
+@router.post("/cotizaciones/estimar", response_model=EstimacionResponse)
+def estimar_cotizacion(
+    data: EstimacionCreate,
+    usuario: dict = Depends(get_usuario_con_rol),
+):
+    """Calcula un estimado de reparación sin guardar cotización ni modificar datos."""
+    try:
+        vehiculo_response = (
+            client.table("vehiculos")
+            .select("id, marca, modelo")
+            .eq("id", data.vehiculo_id)
+            .eq("usuario_id", usuario["id"])
+            .execute()
+        )
+        if not vehiculo_response.data:
+            raise HTTPException(status_code=404, detail="Vehículo no encontrado")
+
+        resultado = estimar_reparacion(
+            vehiculo_response.data[0],
+            [dano.model_dump() for dano in data.danos],
+            [asignacion.model_dump() for asignacion in data.asignaciones],
+        )
+        return resultado
+
+    except HTTPException:
+        raise
+    except AsignacionesInvalidas as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+    except FileNotFoundError as error:
+        raise HTTPException(
+            status_code=503,
+            detail="El catálogo de precios de reparación no está disponible",
+        ) from error
+    except CatalogoPreciosError as error:
+        raise HTTPException(
+            status_code=500,
+            detail=f"El catálogo de precios no es válido: {str(error)}",
+        ) from error
+    except Exception as error:
+        print(f"ERROR al estimar reparación: {error}")
+        raise HTTPException(status_code=500, detail=f"Error al estimar reparación: {str(error)}") from error
+
 
 @router.post("/cotizaciones/completa", response_model=CotizacionResponse)
 def create_cotizacion_completa(
