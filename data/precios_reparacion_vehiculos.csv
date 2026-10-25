@@ -1,0 +1,946 @@
+marca,modelo,pieza,severidad,tipo_establecimiento,precio_min_cop,precio_max_cop,moneda,origen,es_estimacion
+Mazda,Mazda2 Sport,Bumper delantero,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper delantero,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper delantero,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper delantero,moderado,economico,350000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper delantero,moderado,multimarca,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper delantero,moderado,concesionario,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper delantero,grave,economico,1200000,3500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper delantero,grave,multimarca,1600000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper delantero,grave,concesionario,2500000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,moderado,economico,350000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,moderado,multimarca,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,moderado,concesionario,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,grave,economico,1100000,3200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,grave,multimarca,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Bumper trasero,grave,concesionario,2300000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,leve,economico,160000,350000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,leve,multimarca,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,leve,concesionario,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,moderado,economico,300000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,moderado,multimarca,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,moderado,concesionario,600000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,grave,economico,800000,2200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,grave,multimarca,1000000,2700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Guardabarros,grave,concesionario,1500000,3500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,moderado,multimarca,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,moderado,concesionario,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,grave,economico,1300000,3000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,grave,multimarca,1700000,3800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Puerta,grave,concesionario,2500000,5000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,leve,multimarca,300000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,moderado,multimarca,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,moderado,concesionario,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,grave,economico,1100000,2800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,grave,multimarca,1400000,3400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sport,Capó,grave,concesionario,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,moderado,economico,350000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,moderado,multimarca,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,moderado,concesionario,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,grave,economico,1200000,3500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,grave,multimarca,1600000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper delantero,grave,concesionario,2500000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,moderado,economico,350000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,moderado,multimarca,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,moderado,concesionario,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,grave,economico,1100000,3200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,grave,multimarca,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Bumper trasero,grave,concesionario,2300000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,leve,economico,160000,350000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,leve,multimarca,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,leve,concesionario,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,moderado,economico,300000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,moderado,multimarca,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,moderado,concesionario,600000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,grave,economico,800000,2200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,grave,multimarca,1000000,2700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Guardabarros,grave,concesionario,1500000,3500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,moderado,multimarca,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,moderado,concesionario,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,grave,economico,1300000,3000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,grave,multimarca,1700000,3800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Puerta,grave,concesionario,2500000,5000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,leve,multimarca,300000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,moderado,multimarca,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,moderado,concesionario,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,grave,economico,1100000,2800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,grave,multimarca,1400000,3400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda2 Sedán,Capó,grave,concesionario,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,moderado,multimarca,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,moderado,concesionario,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,grave,economico,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,grave,multimarca,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper delantero,grave,concesionario,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,moderado,multimarca,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,moderado,concesionario,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,grave,economico,1400000,3800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,grave,multimarca,1800000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Bumper trasero,grave,concesionario,2800000,6500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,moderado,economico,350000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,moderado,multimarca,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,moderado,concesionario,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,grave,economico,900000,2500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,grave,multimarca,1200000,3000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Guardabarros,grave,concesionario,1800000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,leve,economico,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,moderado,multimarca,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,moderado,concesionario,900000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,grave,multimarca,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Puerta,grave,concesionario,3000000,6500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,leve,economico,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,moderado,multimarca,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,moderado,concesionario,900000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,grave,economico,1300000,3300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,grave,multimarca,1700000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,Mazda3,Capó,grave,concesionario,2500000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,moderado,multimarca,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,moderado,concesionario,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,grave,economico,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,grave,multimarca,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper delantero,grave,concesionario,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,moderado,multimarca,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,moderado,concesionario,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,grave,economico,1400000,3800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,grave,multimarca,1800000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Bumper trasero,grave,concesionario,2800000,6500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,moderado,economico,350000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,moderado,multimarca,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,moderado,concesionario,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,grave,economico,1000000,2800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,grave,multimarca,1300000,3300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Guardabarros,grave,concesionario,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,leve,economico,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,moderado,multimarca,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,moderado,concesionario,900000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,grave,multimarca,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Puerta,grave,concesionario,3000000,6500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,leve,economico,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,moderado,multimarca,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,moderado,concesionario,900000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,grave,economico,1400000,3500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,grave,multimarca,1800000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-30,Capó,grave,concesionario,2800000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,grave,economico,1700000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,grave,multimarca,2300000,5800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper delantero,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,grave,economico,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,grave,multimarca,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Bumper trasero,grave,concesionario,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,leve,concesionario,400000,750000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,moderado,multimarca,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,moderado,concesionario,800000,1700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,grave,economico,1000000,2800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,grave,multimarca,1400000,3500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Guardabarros,grave,concesionario,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,leve,concesionario,500000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,moderado,multimarca,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,grave,economico,1700000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,grave,multimarca,2300000,5300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Puerta,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,leve,concesionario,500000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,moderado,multimarca,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,grave,multimarca,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-5,Capó,grave,concesionario,3000000,6500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,moderado,economico,500000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,moderado,multimarca,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,moderado,concesionario,1000000,2300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,grave,economico,2000000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,grave,multimarca,2800000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper delantero,grave,concesionario,4000000,10000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,moderado,economico,500000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,moderado,multimarca,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,moderado,concesionario,1000000,2300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,grave,economico,1800000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,grave,multimarca,2400000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Bumper trasero,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,grave,economico,1300000,3500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,grave,multimarca,1700000,4200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Guardabarros,grave,concesionario,2500000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,moderado,economico,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,moderado,multimarca,800000,1700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,moderado,concesionario,1100000,2400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,grave,economico,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,grave,multimarca,2800000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Puerta,grave,concesionario,4000000,8000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,moderado,economico,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,moderado,multimarca,800000,1700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,moderado,concesionario,1100000,2400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,grave,economico,1800000,4200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,grave,multimarca,2400000,5200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-50,Capó,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,moderado,economico,500000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,moderado,multimarca,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,moderado,concesionario,1000000,2300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,grave,economico,2000000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,grave,multimarca,2800000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper delantero,grave,concesionario,4000000,10000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,moderado,economico,500000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,moderado,multimarca,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,moderado,concesionario,1000000,2300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,grave,economico,1800000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,grave,multimarca,2400000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Bumper trasero,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,grave,economico,1300000,3500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,grave,multimarca,1700000,4200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Guardabarros,grave,concesionario,2500000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,moderado,economico,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,moderado,multimarca,800000,1700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,moderado,concesionario,1100000,2400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,grave,economico,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,grave,multimarca,2800000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Puerta,grave,concesionario,4000000,8000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,moderado,economico,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,moderado,multimarca,800000,1700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,moderado,concesionario,1100000,2400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,grave,economico,1800000,4200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,grave,multimarca,2400000,5200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-60,Capó,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,leve,multimarca,400000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,moderado,economico,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,moderado,multimarca,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,moderado,concesionario,1100000,2500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,grave,economico,2200000,6500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,grave,multimarca,3000000,8000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper delantero,grave,concesionario,4500000,12000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,leve,multimarca,400000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,moderado,economico,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,moderado,multimarca,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,moderado,concesionario,1100000,2500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,grave,economico,2000000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,grave,multimarca,2800000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Bumper trasero,grave,concesionario,4000000,10000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,leve,concesionario,500000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,moderado,multimarca,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,moderado,concesionario,1000000,2200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,grave,multimarca,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Guardabarros,grave,concesionario,3000000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,leve,economico,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,leve,multimarca,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,moderado,economico,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,moderado,multimarca,850000,1900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,moderado,concesionario,1200000,2600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,grave,economico,2200000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,grave,multimarca,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Puerta,grave,concesionario,4500000,10000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,leve,economico,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,leve,multimarca,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,moderado,economico,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,moderado,multimarca,850000,1900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,moderado,concesionario,1200000,2600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,grave,economico,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,grave,multimarca,2800000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,CX-90,Capó,grave,concesionario,4000000,8000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,leve,economico,220000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,leve,multimarca,300000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,leve,concesionario,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,moderado,economico,450000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,moderado,multimarca,600000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,moderado,concesionario,900000,2200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,grave,economico,2000000,6000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,grave,multimarca,2800000,8000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper delantero,grave,concesionario,4000000,12000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,leve,economico,220000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,leve,multimarca,300000,650000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,leve,concesionario,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,moderado,economico,450000,1100000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,moderado,multimarca,600000,1500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,moderado,concesionario,900000,2200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,grave,economico,1800000,5500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,grave,multimarca,2400000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Bumper trasero,grave,concesionario,3500000,10000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,moderado,multimarca,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,moderado,concesionario,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,grave,economico,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,grave,multimarca,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Guardabarros,grave,concesionario,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,leve,multimarca,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,moderado,economico,500000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,moderado,multimarca,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,moderado,concesionario,1000000,2200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,grave,economico,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,grave,multimarca,2800000,6500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Puerta,grave,concesionario,4000000,9000000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,leve,multimarca,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,moderado,economico,500000,1200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,moderado,multimarca,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,moderado,concesionario,1000000,2200000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,grave,economico,1800000,4500000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,grave,multimarca,2400000,5800000,COP,estimacion_referencia_previamente_definida,true
+Mazda,MX-5,Capó,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,moderado,economico,350000,850000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,moderado,multimarca,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,moderado,concesionario,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,grave,economico,1200000,3500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,grave,multimarca,1600000,4500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper delantero,grave,concesionario,2500000,6000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,moderado,economico,350000,850000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,moderado,multimarca,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,moderado,concesionario,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,grave,economico,1100000,3200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,grave,multimarca,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Bumper trasero,grave,concesionario,2300000,5500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,leve,economico,160000,350000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,leve,multimarca,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,leve,concesionario,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,moderado,economico,300000,700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,moderado,multimarca,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,moderado,concesionario,600000,1200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,grave,economico,800000,2200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,grave,multimarca,1000000,2700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Guardabarros,grave,concesionario,1500000,3500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,moderado,multimarca,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,moderado,concesionario,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,grave,economico,1300000,3000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,grave,multimarca,1700000,3800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Puerta,grave,concesionario,2500000,5000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,leve,multimarca,300000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,moderado,multimarca,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,moderado,concesionario,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,grave,economico,1100000,2800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,grave,multimarca,1400000,3400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Corolla,Capó,grave,concesionario,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,moderado,multimarca,550000,1250000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,moderado,concesionario,800000,1700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,grave,economico,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,grave,multimarca,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper delantero,grave,concesionario,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,moderado,multimarca,550000,1250000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,moderado,concesionario,800000,1700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,grave,economico,1400000,3600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,grave,multimarca,1800000,4500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Bumper trasero,grave,concesionario,2800000,6000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,leve,economico,180000,400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,leve,multimarca,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,leve,concesionario,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,moderado,economico,350000,800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,moderado,multimarca,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,moderado,concesionario,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,grave,economico,900000,2500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,grave,multimarca,1200000,3000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Guardabarros,grave,concesionario,1800000,4000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,leve,economico,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,moderado,economico,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,moderado,multimarca,600000,1250000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,moderado,concesionario,900000,1700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,grave,multimarca,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Puerta,grave,concesionario,3000000,6000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,leve,economico,220000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,moderado,economico,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,moderado,multimarca,600000,1250000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,moderado,concesionario,900000,1700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,grave,economico,1300000,3300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,grave,multimarca,1700000,4000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Yaris Cross,Capó,grave,concesionario,2500000,5500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,leve,concesionario,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,grave,economico,1700000,4800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,grave,multimarca,2300000,6000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper delantero,grave,concesionario,3500000,9000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,leve,concesionario,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,grave,economico,1500000,4500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,grave,multimarca,2000000,5500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Bumper trasero,grave,concesionario,3000000,8000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,moderado,multimarca,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,moderado,concesionario,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,grave,economico,1000000,3000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,grave,multimarca,1400000,3800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Guardabarros,grave,concesionario,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,moderado,economico,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,moderado,multimarca,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,grave,economico,1700000,4200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,grave,multimarca,2300000,5300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Puerta,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,moderado,economico,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,moderado,multimarca,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,grave,multimarca,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Fortuner,Capó,grave,concesionario,3000000,6500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,leve,concesionario,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,grave,economico,1800000,5000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,grave,multimarca,2500000,6500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper delantero,grave,concesionario,3500000,9000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,leve,concesionario,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,grave,economico,1500000,4500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,grave,multimarca,2000000,5500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Bumper trasero,grave,concesionario,3000000,8000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,leve,economico,200000,450000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,leve,concesionario,400000,800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,moderado,multimarca,550000,1300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,moderado,concesionario,800000,1800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,grave,economico,1000000,3000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,grave,multimarca,1400000,3800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Guardabarros,grave,concesionario,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,moderado,economico,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,moderado,multimarca,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,grave,economico,1700000,4200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,grave,multimarca,2300000,5300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Puerta,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,moderado,economico,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,moderado,multimarca,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,grave,multimarca,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,RAV4 HEV,Capó,grave,concesionario,3000000,6500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,leve,economico,250000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,leve,multimarca,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,leve,concesionario,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,moderado,economico,500000,1200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,moderado,multimarca,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,moderado,concesionario,1000000,2300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,grave,economico,2000000,6500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,grave,multimarca,2800000,8000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper delantero,grave,concesionario,4000000,12000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,leve,economico,250000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,leve,multimarca,350000,700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,leve,concesionario,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,moderado,economico,500000,1200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,moderado,multimarca,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,moderado,concesionario,1000000,2300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,grave,economico,1800000,5500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,grave,multimarca,2400000,7000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Bumper trasero,grave,concesionario,3500000,10000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,leve,economico,220000,500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,leve,multimarca,300000,650000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,leve,concesionario,450000,900000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,moderado,multimarca,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,moderado,concesionario,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,grave,economico,1300000,3800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,grave,multimarca,1700000,4500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Guardabarros,grave,concesionario,2500000,6000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,moderado,economico,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,moderado,multimarca,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,moderado,concesionario,1100000,2300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,grave,economico,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,grave,multimarca,2800000,6500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Puerta,grave,concesionario,4000000,9000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,moderado,economico,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,moderado,multimarca,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,moderado,concesionario,1100000,2300000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,grave,economico,1800000,4500000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,grave,multimarca,2400000,5800000,COP,estimacion_referencia_previamente_definida,true
+Toyota,Land Cruiser Prado,Capó,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,leve,economico,220000,450000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,moderado,multimarca,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,moderado,concesionario,900000,1800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,grave,economico,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,grave,multimarca,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper delantero,grave,concesionario,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,leve,economico,220000,450000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,moderado,economico,400000,950000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,moderado,multimarca,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,moderado,concesionario,900000,1800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,grave,economico,1400000,3800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,grave,multimarca,1800000,4800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Bumper trasero,grave,concesionario,2800000,6500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,leve,economico,200000,420000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,leve,multimarca,280000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,leve,concesionario,400000,750000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,moderado,economico,400000,900000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,moderado,multimarca,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,moderado,concesionario,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,grave,economico,1000000,2800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,grave,multimarca,1300000,3300000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Guardabarros,grave,concesionario,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,leve,concesionario,500000,900000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,moderado,economico,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,moderado,multimarca,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,moderado,concesionario,1000000,1900000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,grave,multimarca,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Puerta,grave,concesionario,3000000,6000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,leve,concesionario,500000,900000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,moderado,economico,500000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,moderado,multimarca,700000,1400000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,moderado,concesionario,1000000,1900000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,grave,economico,1400000,3500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,grave,multimarca,1800000,4500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 1,Capó,grave,concesionario,2800000,6000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,moderado,multimarca,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,grave,economico,1700000,4500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,grave,multimarca,2300000,5500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper delantero,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,moderado,multimarca,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,grave,economico,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,grave,multimarca,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Bumper trasero,grave,concesionario,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,moderado,multimarca,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,moderado,concesionario,900000,1800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,grave,economico,1300000,3000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,grave,multimarca,1700000,3800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Guardabarros,grave,concesionario,2500000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,moderado,economico,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,moderado,multimarca,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,moderado,concesionario,1100000,2200000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,grave,economico,1700000,4200000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,grave,multimarca,2300000,5300000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Puerta,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,moderado,economico,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,moderado,multimarca,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,moderado,concesionario,1100000,2200000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,grave,multimarca,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 3,Capó,grave,concesionario,3000000,6500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,leve,economico,250000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,leve,multimarca,350000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,moderado,economico,550000,1250000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,moderado,multimarca,750000,1700000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,moderado,concesionario,1100000,2300000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,grave,economico,2000000,5500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,grave,multimarca,2800000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper delantero,grave,concesionario,4000000,10000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,leve,economico,250000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,leve,multimarca,350000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,moderado,economico,550000,1250000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,moderado,multimarca,750000,1700000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,moderado,concesionario,1100000,2300000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,grave,economico,1800000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,grave,multimarca,2400000,6500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Bumper trasero,grave,concesionario,3500000,9000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,leve,concesionario,500000,900000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,moderado,multimarca,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,grave,multimarca,2000000,4500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Guardabarros,grave,concesionario,3000000,6000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,leve,economico,300000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,leve,multimarca,400000,800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,moderado,economico,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,moderado,multimarca,850000,1900000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,moderado,concesionario,1200000,2500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,grave,economico,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,grave,multimarca,2800000,6500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Puerta,grave,concesionario,4000000,9000000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,leve,economico,300000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,leve,multimarca,400000,800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,moderado,economico,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,moderado,multimarca,850000,1900000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,moderado,concesionario,1200000,2500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,grave,economico,1800000,4500000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,grave,multimarca,2400000,5800000,COP,estimacion_referencia_previamente_definida,true
+BMW,Serie 5,Capó,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,moderado,multimarca,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,grave,economico,1700000,4500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,grave,multimarca,2300000,5500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper delantero,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,leve,concesionario,500000,950000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,moderado,multimarca,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,grave,economico,1500000,4000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,grave,multimarca,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Bumper trasero,grave,concesionario,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,leve,economico,220000,480000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,leve,multimarca,300000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,leve,concesionario,450000,850000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,moderado,economico,450000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,moderado,multimarca,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,moderado,concesionario,900000,1800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,grave,economico,1300000,3000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,grave,multimarca,1700000,3800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Guardabarros,grave,concesionario,2500000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,moderado,economico,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,moderado,multimarca,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,moderado,concesionario,1100000,2200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,grave,economico,1700000,4200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,grave,multimarca,2300000,5300000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Puerta,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,moderado,economico,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,moderado,multimarca,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,moderado,concesionario,1100000,2200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,grave,economico,1500000,3800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,grave,multimarca,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X1,Capó,grave,concesionario,3000000,6500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,leve,economico,250000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,leve,multimarca,350000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,moderado,economico,550000,1250000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,moderado,multimarca,750000,1700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,moderado,concesionario,1100000,2300000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,grave,economico,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,grave,multimarca,2800000,6500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper delantero,grave,concesionario,4000000,9000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,leve,economico,250000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,leve,multimarca,350000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,moderado,economico,550000,1250000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,moderado,multimarca,750000,1700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,moderado,concesionario,1100000,2300000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,grave,economico,1800000,4800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,grave,multimarca,2400000,6000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Bumper trasero,grave,concesionario,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,leve,economico,250000,500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,leve,multimarca,350000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,leve,concesionario,500000,900000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,moderado,economico,500000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,moderado,multimarca,700000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,moderado,concesionario,1000000,2000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,grave,economico,1500000,3500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,grave,multimarca,2000000,4000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Guardabarros,grave,concesionario,3000000,5500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,leve,economico,300000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,leve,multimarca,400000,800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,moderado,economico,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,moderado,multimarca,850000,1800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,moderado,concesionario,1200000,2400000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,grave,economico,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,grave,multimarca,2800000,6000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Puerta,grave,concesionario,4000000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,leve,economico,300000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,leve,multimarca,400000,800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,moderado,economico,600000,1300000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,moderado,multimarca,850000,1800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,moderado,concesionario,1200000,2400000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,grave,economico,1800000,4200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,grave,multimarca,2400000,5200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X3,Capó,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,leve,economico,280000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,leve,multimarca,400000,750000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,moderado,economico,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,moderado,multimarca,800000,1900000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,moderado,concesionario,1200000,2500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,grave,economico,2200000,6000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,grave,multimarca,3000000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper delantero,grave,concesionario,4500000,12000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,leve,economico,280000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,leve,multimarca,400000,750000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,moderado,economico,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,moderado,multimarca,800000,1900000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,moderado,concesionario,1200000,2500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,grave,economico,2000000,5500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,grave,multimarca,2800000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Bumper trasero,grave,concesionario,4000000,10000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,leve,economico,280000,550000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,leve,multimarca,380000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,leve,concesionario,550000,1000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,moderado,economico,550000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,moderado,multimarca,800000,1600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,moderado,concesionario,1100000,2200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,grave,economico,1800000,4200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,grave,multimarca,2400000,5200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Guardabarros,grave,concesionario,3500000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,leve,economico,320000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,leve,multimarca,450000,850000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,leve,concesionario,650000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,moderado,economico,650000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,moderado,multimarca,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,moderado,concesionario,1300000,2700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,grave,economico,2200000,5500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,grave,multimarca,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Puerta,grave,concesionario,4500000,10000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,leve,economico,320000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,leve,multimarca,450000,850000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,leve,concesionario,650000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,moderado,economico,650000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,moderado,multimarca,900000,2000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,moderado,concesionario,1300000,2700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,grave,economico,2000000,5000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,grave,multimarca,2800000,6500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X5,Capó,grave,concesionario,4000000,9000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,leve,economico,300000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,leve,multimarca,450000,800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,leve,concesionario,650000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,moderado,economico,650000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,moderado,multimarca,900000,2100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,moderado,concesionario,1300000,2800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,grave,economico,2500000,7500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,grave,multimarca,3500000,10000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper delantero,grave,concesionario,5000000,15000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,leve,economico,300000,650000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,leve,multimarca,450000,800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,leve,concesionario,650000,1200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,moderado,economico,650000,1500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,moderado,multimarca,900000,2100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,moderado,concesionario,1300000,2800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,grave,economico,2200000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,grave,multimarca,3000000,9000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Bumper trasero,grave,concesionario,4500000,13000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,leve,economico,280000,600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,leve,multimarca,400000,750000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,leve,concesionario,600000,1100000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,moderado,economico,600000,1400000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,moderado,multimarca,800000,1900000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,moderado,concesionario,1200000,2500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,grave,economico,2000000,4800000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,grave,multimarca,2800000,6000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Guardabarros,grave,concesionario,4000000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,leve,economico,350000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,leve,multimarca,500000,900000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,leve,concesionario,700000,1300000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,moderado,economico,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,moderado,multimarca,1000000,2200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,moderado,concesionario,1400000,3000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,grave,economico,2500000,6500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,grave,multimarca,3500000,8000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Puerta,grave,concesionario,5000000,12000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,leve,economico,350000,700000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,leve,multimarca,500000,900000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,leve,concesionario,700000,1300000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,moderado,economico,700000,1600000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,moderado,multimarca,1000000,2200000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,moderado,concesionario,1400000,3000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,grave,economico,2200000,5500000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,grave,multimarca,3000000,7000000,COP,estimacion_referencia_previamente_definida,true
+BMW,X7,Capó,grave,concesionario,4500000,10000000,COP,estimacion_referencia_previamente_definida,true
