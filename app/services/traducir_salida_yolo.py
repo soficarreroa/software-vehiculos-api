@@ -3,7 +3,7 @@ Traduce la salida cruda de YOLO (boxes, clases numericas, confianza,
 mascaras de segmentacion) a un formato mas simple: una lista de
 diccionarios con los datos esenciales de cada dano detectado.
 
-Usa el modelo entrenado con CarDD (models/segmentador_cardd/best.pt, ver
+Usa el modelo entrenado con CarDD (models/segmentador_cardd_candidato_416_25/best.pt, ver
 ENTRENAMIENTO_CARDD.md). Los nombres de clase del modelo estan en ingles y se
 traducen a los tipos de dano de la tabla de costos del proyecto. Ademas estima
 una severidad preliminar (leve / moderado / grave) por tamano relativo del dano
@@ -27,10 +27,11 @@ except ImportError:  # se ejecuta como script, no como parte de un paquete
 
 # Raiz del repositorio: sube de carpeta hasta encontrar requirements.txt (sirve en la raiz o en app/services/).
 BASE_DIR = next((p for p in Path(__file__).resolve().parents if (p / "requirements.txt").is_file()), Path(__file__).resolve().parent)
-MODEL_PATH = BASE_DIR / "models" / "segmentador_cardd" / "best.pt"
+MODEL_PATH = BASE_DIR / "models" / "segmentador_cardd_candidato_416_25" / "best.pt"
 
-# Tamano de imagen con el que se entreno el modelo; debe ser el mismo al predecir.
-IMGSZ = 320
+# Tamaño y umbral seleccionados al evaluar el candidato en validación de CarDD.
+IMGSZ = 416
+CONFIANZA_MINIMA = 0.30
 _PREDICTION_LOCK = Lock()
 
 # Clase del modelo (CarDD) -> tipo de dano del proyecto (tabla de costos).
@@ -108,7 +109,7 @@ def traducir_resultado(result, umbrales=None):
     return danos
 
 
-def traducir_imagen(ruta_imagen, modelo=None, confianza_minima=0.25):
+def traducir_imagen(ruta_imagen, modelo=None, confianza_minima=CONFIANZA_MINIMA):
     """
     Carga el modelo, si no se pasa uno ya cargado, corre la deteccion
     sobre una imagen y devuelve el resultado en formato simple, incluyendo
@@ -130,7 +131,7 @@ def traducir_imagen(ruta_imagen, modelo=None, confianza_minima=0.25):
     }
 
 
-def traducir_imagen_bytes(contenido, nombre_imagen, modelo=None, confianza_minima=0.25):
+def traducir_imagen_bytes(contenido, nombre_imagen, modelo=None, confianza_minima=CONFIANZA_MINIMA):
     """Analiza bytes de imagen sin guardarlos en disco."""
     if modelo is None:
         modelo = cargar_modelo()
@@ -173,7 +174,7 @@ def main():
         ruta_imagen = encontrar_imagen_de_prueba()
         print(f"(No se dio una imagen, usando de ejemplo: {ruta_imagen.name})\n")
 
-    confianza_minima = float(sys.argv[2]) if len(sys.argv) >= 3 else 0.25
+    confianza_minima = float(sys.argv[2]) if len(sys.argv) >= 3 else CONFIANZA_MINIMA
 
     salida = traducir_imagen(ruta_imagen, confianza_minima=confianza_minima)
     print(json.dumps(salida, indent=2, ensure_ascii=False))
