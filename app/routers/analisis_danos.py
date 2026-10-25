@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 from PIL import Image, UnidentifiedImageError
 
 from app.core.dependencies import get_usuario_con_rol
+from app.services.calidad_imagen import verificar_calidad_imagen
 from app.services.traducir_salida_yolo import traducir_imagen_bytes
 
 router = APIRouter()
@@ -12,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 TAMANO_MAXIMO_BYTES = 10 * 1024 * 1024
 PIXELES_MAXIMOS = 40_000_000
+MENSAJE_SIN_DANOS = "No se detectaron daños en la foto"
 TIPOS_CONTENIDO_PERMITIDOS = {
     "image/jpeg": "JPEG",
     "image/png": "PNG",
@@ -74,7 +76,24 @@ async def analizar_danos(
         )
 
     try:
-        return traducir_imagen_bytes(contenido, imagen.filename or "imagen")
+        motivo_poca_calidad = verificar_calidad_imagen(contenido)
+    except (UnidentifiedImageError, OSError, Image.DecompressionBombError, ModuleNotFoundError) as error:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="El archivo no contiene una imagen válida",
+        ) from error
+    if motivo_poca_calidad:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=motivo_poca_calidad,
+        )
+
+    try:
+        resultado = traducir_imagen_bytes(contenido, imagen.filename or "imagen")
+        # Foto valida pero sin ningun dano: no es un error, se responde 200 con un
+        # mensaje para que el frontend lo muestre claro en vez de una lista vacia muda.
+        resultado["mensaje"] = None if resultado["danos_detectados"] else MENSAJE_SIN_DANOS
+        return resultado
     except FileNotFoundError as error:
         logger.error("No está disponible el modelo YOLO: %s", error)
         raise HTTPException(

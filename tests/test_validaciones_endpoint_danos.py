@@ -1,8 +1,9 @@
 """
 Prueba los casos de error y validacion del endpoint POST /api/v1/analisis/danos:
-sin autenticacion, sin archivo, archivo vacio, formato no soportado, imagen
-corrupta, imagen muy grande (bytes) y confirma que una imagen valida sin danos
-devuelve una lista vacia en vez de un error.
+sin autenticacion, archivo vacio, formato no soportado, imagen corrupta,
+imagen demasiado pequena e imagen muy grande (bytes).
+La calidad de la foto (borrosa) y el caso "sin danos" estan en
+test_calidad_y_sin_danos.py.
 """
 import sys
 from pathlib import Path
@@ -58,15 +59,12 @@ probar("Formato no soportado (gif)", respuesta, 415)
 respuesta = cliente.post("/api/v1/analisis/danos", files={"imagen": ("falsa.jpg", b"esto no es una imagen", "image/jpeg")})
 probar("Archivo corrupto / no es imagen real", respuesta, 400)
 
-# 5) Imagen valida de 100x100 blanca, sin ningun dano -> 200 con lista vacia
+# 5) Imagen demasiado pequena (100x100) -> 422 (la calidad se valida en test_calidad_y_sin_danos.py)
 imagen_pequena = io.BytesIO()
 Image.new("RGB", (100, 100), "white").save(imagen_pequena, format="JPEG")
 imagen_pequena.seek(0)
-respuesta = cliente.post("/api/v1/analisis/danos", files={"imagen": ("blanco.jpg", imagen_pequena, "image/jpeg")})
-ok_200 = respuesta.status_code == 200
-danos = respuesta.json().get("danos_detectados", []) if ok_200 else None
-print(f"[{'OK ' if ok_200 else 'FALLO'}] Imagen sin danos (blanco liso): status={respuesta.status_code} danos_detectados={danos}")
-resultados.append(("Imagen sin danos -> 200 con lista vacia", respuesta.status_code, 200, ok_200 and danos == []))
+respuesta = cliente.post("/api/v1/analisis/danos", files={"imagen": ("pequena.jpg", imagen_pequena, "image/jpeg")})
+probar("Imagen demasiado pequena (100x100)", respuesta, 422)
 
 # 6) Imagen muy grande en bytes (>10MB) -> 413
 grande = io.BytesIO()
