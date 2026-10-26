@@ -4,6 +4,7 @@ from typing import Optional, List, Dict, Any
 from datetime import datetime
 from app.core.database import client
 from app.core.dependencies import get_usuario_con_rol
+from app.services.catalogo_piezas import desglosar, elegir_precio, filas_por_pieza
 
 router = APIRouter()
 
@@ -49,38 +50,18 @@ def get_piezas_disponibles_vehiculo(
         if not marca or not modelo:
             raise HTTPException(status_code=400, detail="El vehículo no tiene marca o modelo definido")
 
-        # Obtener piezas disponibles para esta marca y modelo
-        # Unimos las tablas piezas y catalogo_precios
-        piezas_response = client.table("piezas").select(
+        # Piezas con precio; el precio sale de la fila que mejor coincide con el vehículo
+        piezas = client.table("piezas").select(
             "id, codigo, nombre, zona, descripcion, creado_en"
-        ).execute()
+        ).order("nombre").execute().data or []
+        precios = filas_por_pieza(client)
 
         piezas_disponibles = []
-
-        for pieza in piezas_response.data:
-            # Buscar precios para esta pieza y el vehículo
-            precios = client.table("catalogo_precios").select(
-                "precio_repuesto, precio_mano_obra, precio_pintura, moneda"
-            ).eq("pieza_id", pieza["id"]).execute()
-
-            # Filtrar precios que coincidan con la marca/modelo del vehículo
-            precio_aplicable = None
-            for precio in precios.data:
-                # Aquí puedes agregar lógica más compleja de matching
-                # Por ahora, solo verificamos que tenga precios definidos
-                if precio.get("precio_repuesto") is not None:
-                    precio_aplicable = precio
-                    break
-
-            if precio_aplicable:
-                pieza_con_precio = pieza.copy()
-                pieza_con_precio.update({
-                    "precio_repuesto": precio_aplicable.get("precio_repuesto"),
-                    "precio_mano_obra": precio_aplicable.get("precio_mano_obra"),
-                    "precio_pintura": precio_aplicable.get("precio_pintura"),
-                    "moneda": precio_aplicable.get("moneda", "COP")
-                })
-                piezas_disponibles.append(pieza_con_precio)
+        for pieza in piezas:
+            fila = elegir_precio(precios.get(pieza["id"], []), marca, modelo)
+            if fila is None:
+                continue
+            piezas_disponibles.append({**pieza, **desglosar(fila)})
 
         return piezas_disponibles
 

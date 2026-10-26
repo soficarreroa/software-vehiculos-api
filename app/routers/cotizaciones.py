@@ -4,6 +4,7 @@ from typing import Optional, List, Dict, Any, Literal
 from datetime import datetime
 from app.core.database import client
 from app.core.dependencies import get_usuario_con_rol
+from app.services.catalogo_piezas import desglosar, elegir_precio, filas_por_pieza
 from app.services.estimacion_reparacion import (
     AsignacionesInvalidas,
     CatalogoPreciosError,
@@ -220,35 +221,26 @@ def create_cotizacion_completa(
             if not pieza.data:
                 raise HTTPException(status_code=404, detail=f"Pieza con ID {item.pieza_id} no encontrada")
 
-            # Obtener precios del catálogo para esta pieza y vehículo
-            precios = client.table("catalogo_precios").select(
-                "precio_repuesto, precio_mano_obra, precio_pintura, moneda"
-            ).eq("pieza_id", item.pieza_id).execute()
+            # Precio de catálogo que mejor coincide con el vehículo (nunca None: 0 si no hay)
+            filas = filas_por_pieza(client, [item.pieza_id]).get(item.pieza_id, [])
+            precio_info = desglosar(elegir_precio(filas, vehiculo.data[0]["marca"], vehiculo.data[0]["modelo"]))
 
-            # Usar el primer precio disponible (lógica simplificada)
-            precio_info = precios.data[0] if precios.data else {
-                "precio_repuesto": 0.0,
-                "precio_mano_obra": 0.0,
-                "precio_pintura": 0.0,
-                "moneda": "COP"
-            }
-
-            # Calcular subtotal
+            cantidad = max(1, item.cantidad)
             subtotal = (
-                (precio_info.get("precio_repuesto", 0.0) +
-                 precio_info.get("precio_mano_obra", 0.0) +
-                 precio_info.get("precio_pintura", 0.0)) * item.cantidad
-            )
+                precio_info["precio_repuesto"]
+                + precio_info["precio_mano_obra"]
+                + precio_info["precio_pintura"]
+            ) * cantidad
             monto_total += subtotal
 
             # Preparar item para guardar
             item_procesado = {
                 "pieza_id": item.pieza_id,
                 "descripcion": item.descripcion or pieza.data[0]["nombre"],
-                "cantidad": item.cantidad,
-                "precio_unit_repuesto": precio_info.get("precio_repuesto", 0.0),
-                "precio_unit_mano_obra": precio_info.get("precio_mano_obra", 0.0),
-                "precio_unit_pintura": precio_info.get("precio_pintura", 0.0),
+                "cantidad": cantidad,
+                "precio_unit_repuesto": precio_info["precio_repuesto"],
+                "precio_unit_mano_obra": precio_info["precio_mano_obra"],
+                "precio_unit_pintura": precio_info["precio_pintura"],
                 "subtotal": subtotal,
                 "notas": f"Pieza para {vehiculo.data[0]['marca']} {vehiculo.data[0]['modelo']}",
                 "creado_en": datetime.now().isoformat()
