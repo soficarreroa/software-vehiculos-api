@@ -100,7 +100,8 @@ def asignacion(indice: int = 0, pieza: str = "Bumper delantero") -> dict:
 
 def test_csv_real_se_carga_completo_y_sin_duplicados():
     precios = cargar_precios_csv()
-    assert len(precios) == 945
+    # 157 modelos x 45 combinaciones (5 piezas x 3 severidades x 3 establecimientos)
+    assert len(precios) == 7065
     claves = {
         (
             fila["marca"],
@@ -111,7 +112,7 @@ def test_csv_real_se_carga_completo_y_sin_duplicados():
         )
         for fila in precios
     }
-    assert len(claves) == 945
+    assert len(claves) == 7065
 
 
 @pytest.mark.parametrize(
@@ -734,3 +735,37 @@ def test_endpoint_estimar_valida_indices_de_asignaciones(monkeypatch, payload):
     respuesta = cliente.post("/api/v1/cotizaciones/estimar", json=payload)
 
     assert respuesta.status_code == 422
+
+
+def test_csv_real_tiene_las_45_combinaciones_por_modelo_y_precios_coherentes():
+    por_modelo = {}
+    for fila in cargar_precios_csv():
+        por_modelo.setdefault((fila["marca"], fila["modelo"]), []).append(fila)
+
+    assert len(por_modelo) == 157
+    for vehiculo, filas in por_modelo.items():
+        assert len(filas) == 45, vehiculo
+        indice = {
+            (f["pieza"], f["severidad"], f["tipo_establecimiento"]): (f["precio_min_cop"], f["precio_max_cop"])
+            for f in filas
+        }
+        for pieza in {clave[0] for clave in indice}:
+            for establecimiento in ("economico", "multimarca", "concesionario"):
+                leve, moderado, grave = (indice[(pieza, sev, establecimiento)] for sev in ("leve", "moderado", "grave"))
+                assert leve[1] <= moderado[1] <= grave[1], (vehiculo, pieza, establecimiento)
+            for severidad in ("leve", "moderado", "grave"):
+                eco, multi, conc = (indice[(pieza, severidad, est)] for est in ("economico", "multimarca", "concesionario"))
+                assert eco[1] <= multi[1] <= conc[1], (vehiculo, pieza, severidad)
+
+
+def test_vehiculo_de_marca_nueva_del_csv_se_estima():
+    precios = cargar_precios_csv()
+    resultado = calcular_estimado(
+        {"id": 1, "marca": "Kia", "modelo": "Picanto"},
+        [{"tipo_dano": "abolladura", "severidad": "moderado", "confianza": 0.9}],
+        [{"indice_dano": 0, "pieza": "Puerta"}],
+        precios,
+    )
+    assert resultado["marca_csv"] == "Kia"
+    assert resultado["totales"]["multimarca"]["minimo_cop"] > 0
+    assert resultado["totales"]["multimarca"]["completo"] is True

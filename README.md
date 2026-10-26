@@ -189,9 +189,11 @@ tres tipos de establecimiento: `economico`, `multimarca` y `concesionario`.
 Requiere autenticación, valida que el vehículo pertenezca al usuario y **no
 guarda la cotización ni escribe en Supabase**.
 
-El catálogo usado es `data/precios_reparacion_vehiculos.csv` (945 filas, precios
-de referencia para 3 marcas, 21 modelos y 5 categorías de pieza). No se consulta
-la tabla `catalogo_precios` para este cálculo.
+El catálogo usado es `data/precios_reparacion_vehiculos.csv` (7.065 filas, precios
+de referencia para 29 marcas, 157 modelos y 5 categorías de pieza). No se consulta
+la tabla `catalogo_precios` para este cálculo. Los precios de las marcas añadidas
+son estimaciones por segmento; el método y sus límites están en
+`data/README_precios.md`.
 
 **Asignación de piezas:** la lista `asignaciones` relaciona cada índice de daño
 con una pieza. Se aceptan las cinco categorías del CSV y estos nombres reales de
@@ -244,8 +246,8 @@ pendiente; no se corrigen errores ortográficos ni se inventan modelos o precios
 
 Limitaciones actuales:
 
-- El CSV cubre menos vehículos que la base de datos; los vehículos no
-  reconocidos quedan pendientes.
+- El CSV no cubre todos los vehículos del mercado; los vehículos no reconocidos
+  quedan pendientes (el nombre debe coincidir con el del CSV, p. ej. `Mazda3`).
 - La categoría de pieza puede ser más general que el nombre real de la pieza.
 - Varios daños de la misma categoría se agrupan y se cobran una sola vez con la
   severidad más alta.
