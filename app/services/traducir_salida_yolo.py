@@ -1,13 +1,21 @@
 """
-Traduce la salida cruda de YOLO (boxes, clases numericas, confianza,
-mascaras de segmentacion) a un formato mas simple: una lista de
+Traduce las detecciones de dano a un formato mas simple: una lista de
 diccionarios con los datos esenciales de cada dano detectado.
 
-Usa el modelo entrenado con CarDD (models/segmentador_cardd_candidato_416_25/best.pt, ver
-ENTRENAMIENTO_CARDD.md). Los nombres de clase del modelo estan en ingles y se
-traducen a los tipos de dano de la tabla de costos del proyecto. Ademas estima
-una severidad preliminar (leve / moderado / grave) por tamano relativo del dano
-(ver severidad.py); si no existe severidad_umbrales.json, la severidad queda en None.
+El modelo entrenado con CarDD (YOLO de segmentacion) YA NO se carga en este
+backend: corre en un servicio aparte (software-vehiculos-ia). Aqui se le manda
+la foto por HTTP (ver cliente_ia.py) y se traduce la lista "detecciones" que
+responde (clase, confianza, bbox, area_pct) al mismo formato que antes devolvia
+este modulo, para que analisis_danos.py y el frontend no cambien.
+
+Los nombres de clase del modelo estan en ingles y se traducen a los tipos de
+dano de la tabla de costos del proyecto. Ademas estima una severidad preliminar
+(leve / moderado / grave) por tamano relativo del dano (ver severidad.py); si no
+existe severidad_umbrales.json, la severidad queda en None.
+
+cargar_modelo, traducir_resultado y traducir_imagen se conservan SOLO para los
+scripts de ml/ que corren el modelo en local. Importan ultralytics dentro de
+cargar_modelo, asi que el servidor no lo necesita instalado.
 """
 
 import json
@@ -18,18 +26,20 @@ from pathlib import Path
 from threading import Lock
 
 from PIL import Image
-from ultralytics import YOLO
 
 try:
     from .severidad import area_poligono, cargar_umbrales, estimar_severidad, etiqueta_costo
+    from .cliente_ia import ServicioIAError, detectar_danos
 except ImportError:  # se ejecuta como script, no como parte de un paquete
     from severidad import area_poligono, cargar_umbrales, estimar_severidad, etiqueta_costo
+    from cliente_ia import ServicioIAError, detectar_danos
 
 # Raiz del repositorio: sube de carpeta hasta encontrar requirements.txt (sirve en la raiz o en app/services/).
 BASE_DIR = next((p for p in Path(__file__).resolve().parents if (p / "requirements.txt").is_file()), Path(__file__).resolve().parent)
 MODEL_PATH = BASE_DIR / "models" / "segmentador_cardd_candidato_416_25" / "best.pt"
 
 # Tamaño y umbral seleccionados al evaluar el candidato en validación de CarDD.
+# CONFIANZA_MINIMA tambien se aplica a lo que responde el servicio de IA.
 IMGSZ = 416
 CONFIANZA_MINIMA = 0.30
 _PREDICTION_LOCK = Lock()
@@ -47,7 +57,9 @@ TIPOS_DANO = {
 
 @lru_cache(maxsize=1)
 def cargar_modelo():
-    """Carga una sola instancia del modelo por proceso."""
+    """Carga el modelo YOLO LOCAL (solo para los scripts de ml/; el servidor usa el servicio de IA)."""
+    from ultralytics import YOLO  # import tardio: el servidor no necesita ultralytics
+
     if not MODEL_PATH.is_file():
         raise FileNotFoundError(f"No se encontró el modelo YOLO: {MODEL_PATH}")
     return YOLO(str(MODEL_PATH))
@@ -68,7 +80,7 @@ def traducir_resultado(result, umbrales=None):
     """
     Convierte un objeto Results de Ultralytics (la salida cruda de
     model.predict) en una lista simple de diccionarios, uno por cada
-    daño detectado en la imagen.
+    daño detectado en la imagen. (Solo para el modelo local de ml/.)
     """
     danos = []
 
@@ -109,11 +121,68 @@ def traducir_resultado(result, umbrales=None):
     return danos
 
 
+def traducir_detecciones(
+    detecciones, ancho_img=None, alto_img=None, umbrales=None, confianza_minima=CONFIANZA_MINIMA
+):
+    """
+    Convierte la lista "detecciones" del servicio de IA
+        [{"clase": "dent", "confianza": 0.70, "bbox": [x1, y1, x2, y2], "area_pct": 16.41}]
+    en la misma lista de diccionarios que antes producia traducir_resultado.
+
+    area_pct es el area de la mascara como % de la imagen; se divide entre 100 para
+    obtener area_relativa (0 a 1), que es lo que espera estimar_severidad. Si el servicio
+    no manda area_pct, se usa la caja (necesita ancho_img y alto_img).
+    """
+    if umbrales is None:
+        umbrales = cargar_umbrales()
+
+    danos = []
+    for deteccion in detecciones:
+        confianza_cruda = float(deteccion["confianza"])
+        if confianza_cruda < confianza_minima:
+            continue
+
+        x1, y1, x2, y2 = [round(float(v), 1) for v in deteccion["bbox"]]
+        clase_yolo = deteccion["clase"]
+        tipo_dano = TIPOS_DANO.get(clase_yolo, clase_yolo)
+
+        area_pct = deteccion.get("area_pct")
+        if area_pct is not None:
+            area_relativa = float(area_pct) / 100.0
+            tiene_contorno = True
+        elif ancho_img and alto_img:
+            area_relativa = min(1.0, ((x2 - x1) * (y2 - y1)) / (ancho_img * alto_img))
+            tiene_contorno = False
+        else:
+            area_relativa = 0.0
+            tiene_contorno = False
+
+        severidad = estimar_severidad(clase_yolo, area_relativa, umbrales)
+
+        danos.append(
+            {
+                "tipo_dano": tipo_dano,
+                "clase_yolo": clase_yolo,
+                "confianza": round(confianza_cruda, 3),
+                "ubicacion": {"x1": x1, "y1": y1, "x2": x2, "y2": y2},
+                "ancho": round(x2 - x1, 1),
+                "alto": round(y2 - y1, 1),
+                "tiene_contorno": tiene_contorno,
+                "area_relativa": round(area_relativa, 4),
+                "severidad": severidad,
+                "etiqueta_costo": etiqueta_costo(tipo_dano, severidad) if severidad else None,
+            }
+        )
+
+    danos.sort(key=lambda d: d["confianza"], reverse=True)
+    return danos
+
+
 def traducir_imagen(ruta_imagen, modelo=None, confianza_minima=CONFIANZA_MINIMA):
     """
-    Carga el modelo, si no se pasa uno ya cargado, corre la deteccion
+    Carga el modelo LOCAL, si no se pasa uno ya cargado, corre la deteccion
     sobre una imagen y devuelve el resultado en formato simple, incluyendo
-    la lista de tipos de dano encontrados en la foto.
+    la lista de tipos de dano encontrados en la foto. (Solo para scripts de ml/.)
     """
     if modelo is None:
         modelo = cargar_modelo()
@@ -131,20 +200,41 @@ def traducir_imagen(ruta_imagen, modelo=None, confianza_minima=CONFIANZA_MINIMA)
     }
 
 
-def traducir_imagen_bytes(contenido, nombre_imagen, modelo=None, confianza_minima=CONFIANZA_MINIMA):
-    """Analiza bytes de imagen sin guardarlos en disco."""
-    if modelo is None:
-        modelo = cargar_modelo()
+def traducir_imagen_bytes(
+    contenido, nombre_imagen, modelo=None, confianza_minima=CONFIANZA_MINIMA, tipo_contenido="image/jpeg"
+):
+    """Analiza bytes de imagen sin guardarlos en disco.
 
-    with Image.open(BytesIO(contenido)) as imagen:
-        imagen_rgb = imagen.convert("RGB")
+    Por defecto le manda la foto al servicio de IA por HTTP (cliente_ia.detectar_danos).
+    Si se pasa `modelo` (un YOLO ya cargado) se usa ese modelo local, como antes; eso es
+    solo para pruebas y scripts, el servidor nunca lo hace.
 
-    with _PREDICTION_LOCK:
-        resultado = modelo.predict(
-            source=imagen_rgb, conf=confianza_minima, imgsz=IMGSZ, verbose=False
-        )[0]
+    Puede lanzar ServicioIANoDisponible o ServicioIAError (ver cliente_ia.py).
+    """
+    if modelo is not None:
+        with Image.open(BytesIO(contenido)) as imagen:
+            imagen_rgb = imagen.convert("RGB")
 
-    danos = traducir_resultado(resultado)
+        with _PREDICTION_LOCK:
+            resultado = modelo.predict(
+                source=imagen_rgb, conf=confianza_minima, imgsz=IMGSZ, verbose=False
+            )[0]
+
+        danos = traducir_resultado(resultado)
+    else:
+        with Image.open(BytesIO(contenido)) as imagen:
+            ancho_img, alto_img = imagen.size
+
+        detecciones = detectar_danos(contenido, nombre_imagen, tipo_contenido)
+        try:
+            danos = traducir_detecciones(
+                detecciones, ancho_img, alto_img, confianza_minima=confianza_minima
+            )
+        except (KeyError, TypeError, ValueError, AttributeError) as error:
+            raise ServicioIAError(
+                f"El servicio de IA devolvio detecciones con formato inesperado: {error!r}"
+            ) from error
+
     return {
         "imagen": nombre_imagen,
         "tipos_detectados": sorted({dano["tipo_dano"] for dano in danos}),

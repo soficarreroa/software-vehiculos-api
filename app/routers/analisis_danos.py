@@ -2,10 +2,12 @@ import logging
 from io import BytesIO
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
+from fastapi.concurrency import run_in_threadpool
 from PIL import Image, UnidentifiedImageError
 
 from app.core.dependencies import get_usuario_con_rol
 from app.services.calidad_imagen import verificar_calidad_imagen
+from app.services.cliente_ia import ServicioIAError, ServicioIANoDisponible
 from app.services.traducir_salida_yolo import traducir_imagen_bytes
 
 router = APIRouter()
@@ -26,7 +28,7 @@ async def analizar_danos(
     imagen: UploadFile = File(..., description="Imagen del vehículo (JPEG, PNG o WEBP)"),
     usuario: dict = Depends(get_usuario_con_rol),
 ):
-    """Detecta daños en una imagen usando el modelo YOLO entrenado con CarDD."""
+    """Detecta daños en una imagen usando el modelo YOLO entrenado con CarDD (servicio de IA aparte)."""
     try:
         contenido = await imagen.read(TAMANO_MAXIMO_BYTES + 1)
     finally:
@@ -89,16 +91,33 @@ async def analizar_danos(
         )
 
     try:
-        resultado = traducir_imagen_bytes(contenido, imagen.filename or "imagen")
+        # La llamada al servicio de IA es bloqueante y puede tardar 1-2 minutos si el
+        # servicio gratuito estaba dormido. run_in_threadpool la saca del hilo principal
+        # para que el resto de la API siga respondiendo mientras tanto.
+        resultado = await run_in_threadpool(
+            traducir_imagen_bytes,
+            contenido,
+            imagen.filename or "imagen",
+            tipo_contenido=tipo_contenido,
+        )
         # Foto valida pero sin ningun dano: no es un error, se responde 200 con un
         # mensaje para que el frontend lo muestre claro en vez de una lista vacia muda.
         resultado["mensaje"] = None if resultado["danos_detectados"] else MENSAJE_SIN_DANOS
         return resultado
-    except FileNotFoundError as error:
-        logger.error("No está disponible el modelo YOLO: %s", error)
+    # Estos dos van ANTES de "except OSError": las excepciones de la libreria requests
+    # heredan de OSError y se confundirian con una imagen invalida.
+    except ServicioIANoDisponible as error:
+        logger.warning("Servicio de IA no disponible: %s", error)
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="El modelo de análisis de daños no está disponible",
+            detail="El servicio de análisis de daños está iniciando o no responde. "
+            "Espera uno o dos minutos e inténtalo de nuevo",
+        ) from error
+    except ServicioIAError as error:
+        logger.error("Error del servicio de IA (estado %s): %s", error.estado, error)
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail="No se pudo completar el análisis de daños: el servicio de IA devolvió un error",
         ) from error
     except (UnidentifiedImageError, OSError, Image.DecompressionBombError) as error:
         raise HTTPException(
