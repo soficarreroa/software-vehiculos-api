@@ -24,7 +24,10 @@ class CotizacionCompletaCreate(BaseModel):
     vehiculo_id: int = Field(..., description="ID del vehículo")
     fecha_incidente: str = Field(..., description="Fecha del incidente (YYYY-MM-DD)")
     observaciones: Optional[str] = Field(None, description="Observaciones del incidente")
-    items: List[ItemCotizacionCreate] = Field(..., description="Lista de piezas seleccionadas")
+    items: List[ItemCotizacionCreate] = Field(default_factory=list, description="Lista de piezas seleccionadas (opcional si hay monto_estimado)")
+    monto_estimado: Optional[float] = Field(
+        None, ge=0, description="Monto estimado en COP calculado con la foto; si viene, se guarda como monto_total"
+    )
 
 class CotizacionResponse(BaseModel):
     id: int
@@ -199,6 +202,9 @@ def create_cotizacion_completa(
     usuario: dict = Depends(get_usuario_con_rol),
 ):
     """Crear una cotización completa con vehículo e items seleccionados"""
+    if not data.items and not data.monto_estimado:
+        raise HTTPException(status_code=422, detail="Agrega al menos una pieza o un estimado de reparación")
+
     try:
         # Verificar que el vehículo existe y pertenece al usuario
         vehiculo = (
@@ -252,7 +258,8 @@ def create_cotizacion_completa(
             "usuario_id": usuario["id"],
             "vehiculo_id": data.vehiculo_id,
             "estado": "borrador",
-            "monto_total": monto_total,
+            # El estimado de la foto, si existe, manda sobre la suma de precios de catálogo
+            "monto_total": data.monto_estimado if data.monto_estimado else monto_total,
             "moneda": "COP",
             "fecha_incidente": data.fecha_incidente,
             "observaciones": data.observaciones,
