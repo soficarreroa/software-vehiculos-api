@@ -58,9 +58,9 @@ def get_piezas_disponibles_vehiculo(
 
         piezas_disponibles = []
         for pieza in piezas:
+            # Sin precio en el catálogo la pieza igual se ofrece (con precios en 0) para
+            # que el usuario pueda elegirla; antes se omitía y la lista llegaba vacía.
             fila = elegir_precio(precios.get(pieza["id"], []), marca, modelo)
-            if fila is None:
-                continue
             piezas_disponibles.append({**pieza, **desglosar(fila)})
 
         return piezas_disponibles

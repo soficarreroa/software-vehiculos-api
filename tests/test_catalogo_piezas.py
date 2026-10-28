@@ -92,7 +92,7 @@ def _app(monkeypatch, vehiculos, piezas_tabla, precios):
     return TestClient(app)
 
 
-def test_endpoint_piezas_usa_precio_del_vehiculo_y_omite_piezas_sin_precio(monkeypatch):
+def test_endpoint_piezas_usa_precio_del_vehiculo_y_ofrece_piezas_sin_precio_en_cero(monkeypatch):
     ahora = "2026-01-01T00:00:00"
     piezas_tabla = [
         {"id": 1, "codigo": "A", "nombre": "Parabrisas", "zona": None, "descripcion": None, "creado_en": ahora},
@@ -103,5 +103,7 @@ def test_endpoint_piezas_usa_precio_del_vehiculo_y_omite_piezas_sin_precio(monke
     r = cliente.get("/api/v1/vehiculos/7/piezas-disponibles")
     assert r.status_code == 200
     cuerpo = r.json()
-    assert [p["nombre"] for p in cuerpo] == ["Parabrisas"]
+    # La pieza sin fila de precio igual se ofrece (con precios en 0) para poder elegirla
+    assert [p["nombre"] for p in cuerpo] == ["Parabrisas", "Sin precio"]
     assert cuerpo[0]["precio_repuesto"] == 900
+    assert cuerpo[1]["precio_repuesto"] == 0
